@@ -1,0 +1,3524 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-02-06T00:33:23+08:00</updated><id>http://localhost:4000//</id><title type="html">Little Forest</title><subtitle>Roc J's Blog</subtitle><author><name>Roc J</name></author><entry><title type="html">【Vim】Vim编辑器使用</title><link href="http://localhost:4000/2017/01/22/vim%E7%BC%96%E8%BE%91%E5%99%A8%E4%BD%BF%E7%94%A8/" rel="alternate" type="text/html" title="【Vim】Vim编辑器使用" /><published>2017-01-22T19:18:57+08:00</published><updated>2017-01-22T19:18:57+08:00</updated><id>http://localhost:4000/2017/01/22/vim%E7%BC%96%E8%BE%91%E5%99%A8%E4%BD%BF%E7%94%A8</id><content type="html" xml:base="http://localhost:4000/2017/01/22/vim%E7%BC%96%E8%BE%91%E5%99%A8%E4%BD%BF%E7%94%A8/">&lt;blockquote&gt;
+  &lt;p&gt;vi(vim)是上Linux非常常用的编辑器，很多Linux发行版都默认安装了vi(vim)。vi(vim)命令繁多但是如果使用灵活之后将会大大提高效率。
+vi是“visual interface”的缩写，vim是vi IMproved(增强版的vi)。在一般的系统管理维护中vi就够用，如果想使用代码加亮的话可以使用vim。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;vi3&quot;&gt;vi有3个模式：插入模式、命令模式、低行模式&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;插入模式：在此模式下可以输入字符，按ESC将回到命令模式。&lt;/li&gt;
+  &lt;li&gt;命令模式：可以移动光标、删除字符等。&lt;/li&gt;
+  &lt;li&gt;低行模式：可以保存文件、退出vi、设置vi、查找等功能(低行模式也可以看作是命令模式里的)。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;vi&quot;&gt;vi常用命令&lt;/h1&gt;
+
+&lt;h2 id=&quot;vi-1&quot;&gt;一、打开、保存、关闭文件(vi命令模式下使用)&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi filename   //打开filename文件
+:w            //保存文件
+:w vpser.net  //保存至vpser.net文件
+:q            //退出编辑器，如果文件已修改请使用下面的命令
+:q!           //退出编辑器，且不保存
+:wq           //退出编辑器，且保存文件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;viesc&quot;&gt;二、插入文本或行(vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式)&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a	//在当前光标位置的右边添加文本
+i	//在当前光标位置的左边添加文本
+A	//在当前行的末尾位置添加文本
+I	//在当前行的开始处添加文本(非空字符的行首)
+O	//在当前行的上面新建一行
+o	//在当前行的下面新建一行
+R	//替换(覆盖)当前光标位置及后面的若干文本
+J	//合并光标所在行及下一行为一行(依然在命令模式)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;vi-2&quot;&gt;三、移动光标(vi命令模式下使用)&lt;/h2&gt;
+
+&lt;p&gt;1、使用上下左右方向键
+2、命令模式下：h   向左、j   向下 、k   向上、l  向右。
+空格键 向右、Backspace  向左、Enter  移动到下一行首、-  移动到上一行首。&lt;/p&gt;
+
+&lt;h2 id=&quot;vi-3&quot;&gt;四、删除、恢复字符或行(vi命令模式下使用)&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;x     //删除当前字符
+nx    //删除从光标开始的n个字符
+dd    //删除当前行
+ndd   //向下删除当前行在内的n行
+u     //撤销上一步操作
+U     //撤销对当前行的所有操作
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;vi-4&quot;&gt;五、搜索(vi命令模式下使用)&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/vpser    //向光标下搜索vpser字符串
+?vpser    //向光标上搜索vpser字符串
+n         //向下搜索前一个搜素动作
+N         //向上搜索前一个搜索动作
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;vi-5&quot;&gt;六、跳至指定行(vi命令模式下使用)&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;n+        //向下跳n行
+n-        //向上跳n行
+nG        //跳到行号为n的行
+G         //跳至文件的底部
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;vi-6&quot;&gt;七、设置行号(vi命令模式下使用)&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:set  nu    //显示行号
+:set nonu   //取消显示行号
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;vi-7&quot;&gt;八、复制、粘贴(vi命令模式下使用)&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yy    //将当前行复制到缓存区，也可以用 &quot;ayy 复制，&quot;a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。
+nyy   //将当前行向下n行复制到缓冲区，也可以用 &quot;anyy 复制，&quot;a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。
+yw    //复制从光标开始到词尾的字符。
+nyw   //复制从光标开始的n个单词。
+y^    //复制从光标到行首的内容。  @VPS侦探
+y$    //复制从光标到行尾的内容。
+p     //粘贴剪切板里的内容在光标后，如果使用了前面的自定义缓冲区，建议使用&quot;ap 进行粘贴。
+P     //粘贴剪切板里的内容在光标前，如果使用了前面的自定义缓冲区，建议使用&quot;aP 进行粘贴。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;vi-8&quot;&gt;九、替换(vi命令模式下使用)&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:s/old/new         //用new替换行中首次出现的old
+:s/old/new/g       //用new替换行中所有的old
+:n,m s/old/new/g   //用new替换从n到m行里所有的old
+:%s/old/new/g      //用new替换当前文件里所有的old
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;十、编辑其他文件&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:e otherfilename    //编辑文件名为otherfilename的文件。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;十一、修改文件格式&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:set fileformat=unix   //将文件修改为unix格式，如win下面的文本文件在linux下会出现^M。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;section-2&quot;&gt;总结&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;vi(vim)教程虽然有比较多的命令，但是只要勤加练习，相信你会很快的熟练掌握，同时也会给你的工作或学习带来更高的效率。&lt;/li&gt;
+  &lt;li&gt;当如果不知道自己处在什么模式时可以按2次Esc键即可回到命令模式，最后提醒一点：注意大小写！！！&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Roc J</name></author><category term="vi" /><category term="vim" /><category term="教程" /><summary type="html">vi(vim)是上Linux非常常用的编辑器，很多Linux发行版都默认安装了vi(vim)。vi(vim)命令繁多但是如果使用灵活之后将会大大提高效率。
+vi是“visual interface”的缩写，vim是vi IMproved(增强版的vi)。在一般的系统管理维护中vi就够用，如果想使用代码加亮的话可以使用vim。</summary></entry><entry><title type="html">Love Express Html</title><link href="http://localhost:4000/2017/01/21/love-express/" rel="alternate" type="text/html" title="Love Express Html" /><published>2017-01-21T03:53:33+08:00</published><updated>2017-01-21T03:53:33+08:00</updated><id>http://localhost:4000/2017/01/21/love-express</id><content type="html" xml:base="http://localhost:4000/2017/01/21/love-express/">&lt;h1 id=&quot;section&quot;&gt;预览&lt;/h1&gt;
+
+&lt;iframe src=&quot;https://rocj.github.io/love-express-html/&quot; frameborder=&quot;1&quot; width=&quot;1080&quot; scrolling=&quot;auto&quot; height=&quot;720&quot;&gt;&lt;/iframe&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;源码下载&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/rocj/love-express-html/&quot;&gt;下载地址&lt;/a&gt;&lt;/p&gt;</content><author><name>Roc J</name></author><category term="love" /><category term="express" /><category term="html" /><summary type="html">预览</summary></entry><entry><title type="html">【C/C++】#ifndef 防止头文件被多次编译</title><link href="http://localhost:4000/2017/01/19/ifndef-%E9%98%B2%E6%AD%A2%E5%A4%B4%E6%96%87%E4%BB%B6%E8%A2%AB%E5%A4%9A%E6%AC%A1%E7%BC%96%E8%AF%91/" rel="alternate" type="text/html" title="【C/C++】#ifndef 防止头文件被多次编译" /><published>2017-01-19T03:58:28+08:00</published><updated>2017-01-19T03:58:28+08:00</updated><id>http://localhost:4000/2017/01/19/ifndef-%E9%98%B2%E6%AD%A2%E5%A4%B4%E6%96%87%E4%BB%B6%E8%A2%AB%E5%A4%9A%E6%AC%A1%E7%BC%96%E8%AF%91</id><content type="html" xml:base="http://localhost:4000/2017/01/19/ifndef-%E9%98%B2%E6%AD%A2%E5%A4%B4%E6%96%87%E4%BB%B6%E8%A2%AB%E5%A4%9A%E6%AC%A1%E7%BC%96%E8%AF%91/">&lt;ul&gt;
+  &lt;li&gt;在 .h 头部加上
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+#pragma once
+&lt;/code&gt;
+从&lt;code class=&quot;highlighter-rouge&quot;&gt;Visual Studio 2003&lt;/code&gt;开始就支持这个 directive，如果是 Visual Studio 6.0 就不支持了&lt;/li&gt;
+  &lt;li&gt;条件编译
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+#ifndef _HEADFILE_H_
+#define _HEADFILE_H_
+//在这里写你的头文件内容
+#endif
+&lt;/code&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;_HEADFILE_H_&lt;/code&gt; 为宏名，用以区分不同的条件编译程序段&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Roc J</name></author><category term="c" /><category term="c++" /><category term="learn" /><summary type="html">在 .h 头部加上
+
+#pragma once
+
+从Visual Studio 2003开始就支持这个 directive，如果是 Visual Studio 6.0 就不支持了
+  条件编译
+
+#ifndef _HEADFILE_H_
+#define _HEADFILE_H_
+//在这里写你的头文件内容
+#endif
+
+_HEADFILE_H_ 为宏名，用以区分不同的条件编译程序段</summary></entry><entry><title type="html">【Git】Git常用命令（持续更新）</title><link href="http://localhost:4000/2017/01/19/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/" rel="alternate" type="text/html" title="【Git】Git常用命令（持续更新）" /><published>2017-01-19T03:38:29+08:00</published><updated>2017-01-19T03:38:29+08:00</updated><id>http://localhost:4000/2017/01/19/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4(%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0)</id><content type="html" xml:base="http://localhost:4000/2017/01/19/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/">&lt;h1 id=&quot;section&quot;&gt;配置&lt;/h1&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git --version
+
+//配置ssh-key
+ssh-keygen
+
+//查看Git全局配置信息
+git config -l
+
+//配置全局用户名和邮箱
+git config --global user.name &lt;span class=&quot;s2&quot;&gt;&quot;user_name&quot;&lt;/span&gt;
+git config --global user.email &lt;span class=&quot;s2&quot;&gt;&quot;user_email&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;repository&quot;&gt;仓库（版本库）repository&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir folder_name
+cd folder_name
+//显示当前folder路径
+pwd
+
+//将folder初始化为空的本地repo
+git init
+
+//显示当前folder内容
+ls
+//显示当前folder内容（包括隐藏的文件）
+ls -ah
+
+//添加readme.md
+vi readme.md
+//insert
+i
+//exit and save
+:wq
+
+//提交文件修改到本地库
+git add file_name
+//提交全部
+git add .
+//提交，-m &quot;modify_content&quot;指提交说明
+git commit -m &quot;modify_content&quot;
+
+git commit -a &quot;modify_content&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;分支&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//查看本地分支
+git branch
+//查看远端分支
+git branch -a
+
+//创建并切换到dev(development)分支
+git checkout -b dev
+
+//创建dev分支
+git branch dev
+
+//删除分支
+git branch -d name
+
+//切换分支
+git checkout name
+
+
+//查看工作区中文件的状态
+git status
+
+
+//查看版本的提交记录，以选择回退到之前哪个版本
+git log
+
+//从版本库和硬盘上同时删除文件
+git rm filename
+
+
+//复制远程的Git代码库到本地文件夹
+git clone remote_url [local_dir]
+
+
+git pull
+
+
+git push
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   mkdir：         XX (创建一个空目录 XX指目录名)
+
+   pwd：          显示当前目录的路径。
+
+   git init          把当前的目录变成可以管理的git仓库，生成隐藏.git文件。
+
+   git add XX       把xx文件添加到暂存区去。
+
+   git commit –m “XX”  提交文件 –m 后面的是注释。
+
+   git status        查看仓库状态
+
+   git diff  XX      查看XX文件修改了那些内容
+
+   git log          查看历史记录
+
+   git reset  --hard HEAD^ 或者 git reset  --hard HEAD~ 回退到上一个版本
+
+                        (如果想回退到100个版本，使用git reset –hard HEAD~100 )
+
+   cat XX         查看XX文件内容
+
+   git reflog       查看历史记录的版本号id
+
+   git checkout -- XX  把XX文件在工作区的修改全部撤销。
+
+   git rm XX          删除XX文件
+
+   git remote add origin https://github.com/tugenhua0707/testgit 关联一个远程库
+
+   git push –u(第一次要用-u 以后不需要) origin master 把当前master分支推送到远程库
+
+   git clone https://github.com/tugenhua0707/testgit  从远程库中克隆
+
+   git checkout –b dev  创建dev分支 并切换到dev分支上
+
+   git branch  查看当前所有的分支
+
+   git checkout master 切换回master分支
+
+   git merge dev    在当前的分支上合并dev分支
+
+   git branch –d dev 删除dev分支
+
+   git branch name  创建分支
+
+   git stash 把当前的工作隐藏起来 等以后恢复现场后继续工作
+
+   git stash list 查看所有被隐藏的文件列表
+
+   git stash apply 恢复被隐藏的文件，但是内容不删除
+
+   git stash drop 删除文件
+
+   git stash pop 恢复文件的同时 也删除文件
+
+   git remote 查看远程库的信息
+
+   git remote –v 查看远程库的详细信息
+
+   git push origin master  Git会把master分支推送到远程库对应的远程分支上
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>Roc J</name></author><category term="git" /><summary type="html">配置
+```bash
+git –version</summary></entry><entry><title type="html">Awesome Blogs</title><link href="http://localhost:4000/2017/01/18/%E4%BD%BF%E7%94%A8Coding-Pages%E6%90%AD%E5%BB%BA%E7%9A%84%E4%BC%98%E8%B4%A8%E5%8D%9A%E5%AE%A2/" rel="alternate" type="text/html" title="Awesome Blogs" /><published>2017-01-18T04:53:33+08:00</published><updated>2017-01-18T04:53:33+08:00</updated><id>http://localhost:4000/2017/01/18/%E4%BD%BF%E7%94%A8Coding-Pages%E6%90%AD%E5%BB%BA%E7%9A%84%E4%BC%98%E8%B4%A8%E5%8D%9A%E5%AE%A2</id><content type="html" xml:base="http://localhost:4000/2017/01/18/%E4%BD%BF%E7%94%A8Coding-Pages%E6%90%AD%E5%BB%BA%E7%9A%84%E4%BC%98%E8%B4%A8%E5%8D%9A%E5%AE%A2/">&lt;h2 id=&quot;coding-pages-&quot;&gt;使用 Coding Pages 搭建的优质博客&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;博客名称&lt;/th&gt;
+      &lt;th&gt;介绍&lt;/th&gt;
+      &lt;th&gt;域名&lt;/th&gt;
+      &lt;th&gt;Coding Pages&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;TBOOX&lt;/td&gt;
+      &lt;td&gt;the TBOOX Open Source Project&lt;/td&gt;
+      &lt;td&gt;http://tboox.org&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/waruqi/p/tboox/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;EyreFree&lt;/td&gt;
+      &lt;td&gt;iOS 开发相关&lt;/td&gt;
+      &lt;td&gt;https://www.eyrefree.org&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/eyrefree/p/eyrefree.org/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;小胡子哥的个人网站&lt;/td&gt;
+      &lt;td&gt;JavaScript、前端相关&lt;/td&gt;
+      &lt;td&gt;https://barretlee.com&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/barretlee/p/blog/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;IPRO&lt;/td&gt;
+      &lt;td&gt;养草程序员的博客&lt;/td&gt;
+      &lt;td&gt;https://ipro.xin&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/tan/p/tan/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;邵辉CRR&lt;/td&gt;
+      &lt;td&gt;Android 开发相关&lt;/td&gt;
+      &lt;td&gt;http://shaohui.me&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/shaohui10086/p/shaohui10086/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;N神的研究所&lt;/td&gt;
+      &lt;td&gt;前端、游戏、Flash 等&lt;/td&gt;
+      &lt;td&gt;http://nshen.net&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/nshen/p/nshen121/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;xiaofeig&lt;/td&gt;
+      &lt;td&gt;JavaWeb后台开发&lt;/td&gt;
+      &lt;td&gt;http://coding.xiaofeig.cn&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/xiaofeig/p/xiaofeig/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CZP’S BLOG&lt;/td&gt;
+      &lt;td&gt;技术、读书、随笔等&lt;/td&gt;
+      &lt;td&gt;http://blog.luckypeng.com&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/czphappy/p/blog/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;高明飞的博客&lt;/td&gt;
+      &lt;td&gt;嵌入式系统开发等各种技术&lt;/td&gt;
+      &lt;td&gt;http://gaomf.cn&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/g199209/p/g199209/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;代码小屋&lt;/td&gt;
+      &lt;td&gt;优质技术资源共享、全栈开发&lt;/td&gt;
+      &lt;td&gt;http://yodes.cn&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/Yodeser/p/Yodeser/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;yoqu的小博客&lt;/td&gt;
+      &lt;td&gt;Java 开发相关，系统使用分享&lt;/td&gt;
+      &lt;td&gt;http://www.yoqu.org&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/yoqu/p/blog/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;不可能不确定&lt;/td&gt;
+      &lt;td&gt;Node.js、JavaScript 开发&lt;/td&gt;
+      &lt;td&gt;http://chensd.com&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/Stiekel/p/blog/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;JXue博客&lt;/td&gt;
+      &lt;td&gt;全栈开发&lt;/td&gt;
+      &lt;td&gt;http://jxue.coding.me&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/JXue/p/JXue/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;胡阳广的博客&lt;/td&gt;
+      &lt;td&gt;技术，工作，生活，杂谈&lt;/td&gt;
+      &lt;td&gt;https://uxwind.me&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/chnhyg/p/chnhyg/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;crossoverJie的独立博客&lt;/td&gt;
+      &lt;td&gt;JavaWeb、Android 等互联网技术&lt;/td&gt;
+      &lt;td&gt;http://crossoverjie.top&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/crossoverJie/p/crossoverJie/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;saymagic的博客&lt;/td&gt;
+      &lt;td&gt;Android 开发相关&lt;/td&gt;
+      &lt;td&gt;http://blog.saymagic.cn&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/saymagic/p/blog/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;JXue博客&lt;/td&gt;
+      &lt;td&gt;全栈开发&lt;/td&gt;
+      &lt;td&gt;http://jxue.coding.me&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/JXue/p/JXue/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Half Lab&lt;/td&gt;
+      &lt;td&gt;计算机图形&amp;amp;创意编程&lt;/td&gt;
+      &lt;td&gt;https://www.halflab.me&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/shawn0326/p/shawn0326/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;szhshp的第三边境研究所&lt;/td&gt;
+      &lt;td&gt;前端，设计，游戏，生活&lt;/td&gt;
+      &lt;td&gt;http://szhshp.org&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/szhshp/p/stylish-portfolio-jekyll/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;LP’s BLog&lt;/td&gt;
+      &lt;td&gt;业余全栈开发，Node.js、Linux爱好者&lt;/td&gt;
+      &lt;td&gt;http://lupeng.me&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/pengloo53/p/pengloo53/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;爱红旗渠&lt;/td&gt;
+      &lt;td&gt;技术博客 Android&lt;/td&gt;
+      &lt;td&gt;http://ihongqiqu.com&lt;/td&gt;
+      &lt;td&gt;https://coding.net/u/keeeweee/p/keeeweee/git/pages&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>Roc J</name></author><category term="coding-pages" /><category term="blog" /><summary type="html">使用 Coding Pages 搭建的优质博客</summary></entry><entry><title type="html">【Code】分享雷军22年前编写的代码</title><link href="http://localhost:4000/2017/01/18/%E5%88%86%E4%BA%AB%E9%9B%B7%E5%86%9B22%E5%B9%B4%E5%89%8D%E7%BC%96%E5%86%99%E7%9A%84%E4%BB%A3%E7%A0%81/" rel="alternate" type="text/html" title="【Code】分享雷军22年前编写的代码" /><published>2017-01-18T03:53:33+08:00</published><updated>2017-01-18T03:53:33+08:00</updated><id>http://localhost:4000/2017/01/18/%E5%88%86%E4%BA%AB%E9%9B%B7%E5%86%9B22%E5%B9%B4%E5%89%8D%E7%BC%96%E5%86%99%E7%9A%84%E4%BB%A3%E7%A0%81</id><content type="html" xml:base="http://localhost:4000/2017/01/18/%E5%88%86%E4%BA%AB%E9%9B%B7%E5%86%9B22%E5%B9%B4%E5%89%8D%E7%BC%96%E5%86%99%E7%9A%84%E4%BB%A3%E7%A0%81/">&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;;
+; RI.ASM Revision 2.12 [ July 12, 1994 ]
+Revision equ 'V2.12 '
+;
+; 
+;  
+;  RAMinit Release 2.0 
+;  Copyright (c) 1989-1994 by Yellow Rose Software Co. 
+;  Written by Mr. Leijun 
+;  
+;  Function: 
+;  Press HotKey to remove all TSR program after this program 
+;  
+; 
+
+; ..........................................................................
+; Removed Softwares by RI:
+; SPDOS v6.0F, WPS v3.0F
+; Game Busters III, IV
+; NETX ( Novell 3.11 )
+; PC-CACHE
+; Norton Cache
+; Microsoft SmartDrv
+; SideKick 1.56A
+; MOUSE Driver
+; Crazy (Monochrome simulate CGA program)
+; RAMBIOS v2.0
+; 386MAX Version 6.01
+; ..........................................................................
+; No cancel softwares:
+; Windows 3.1 MSD
+;
+; No removed TSR softwares:
+; MS-DOS fastopen
+; Buffers, Files ... (QEMM 6.0)
+; QCache (386MAX 6.01)
+; ..........................................................................
+;
+COMMENT 
+
+V2.04 Use mouse driver software reset function to initiation mouse
+2/17/1993 by Mr. Lei and Mr. Feng
+V2.05 RI cannot work in Windows DOS prompt
+3/9/1993 by Mr. Lei
+V2.06 1. When XMS cannot allocate 1K memory, RI halts.
+2. RI repeat deallocates EMS memory.
+V2.07 HotKey Setup Error
+4/25/1993 by Mr. Lei
+V2.08 KB Buffer
+V2.10 1. Release high memory blocks (EMM386 QEMM386 S-ICE 386MAX)
+2. RI copies flag
+V2.12 1. Exists a critical error in Init 8259 procedure
+2. Save [40:F0--FF] user data area
+
+
+
+dosseg
+.model tiny
+.code
+locals @@
+org 100h
+
+Start: jmp Main
+org 103h
+
+True equ 1
+False equ 0
+MaxHandles equ 100h
+
+INT3 macro
+out 0ffh,al
+endm
+;
+; HotKey Status Test Var
+; --------------- ---------------
+;
+; 7 6 5 4 3 2 1 0 417 418 496
+; . . x . x . . . Left Alt is pressed 8 2
+; x . . . x . . . Right Alt is pressed 8 8
+; . . . x . x . . Left Ctrl is pressed 4 1
+; . x . . . x . . Right Ctrl is pressed 4 4
+; . . . . . . x . Left Shift is pressed 2
+; . . . . . . . x Right Shift is pressed 1
+;
+LeftAlt equ 00101000b
+RightAlt equ 10001000b
+LeftCtrl equ 00010100b
+RightCtrl equ 01000100b
+LeftShift equ 00000010b
+RightShift equ 00000001b
+HotKey db LeftCtrl or RightCtrl
+
+DataBegin dw 0
+NextDataSeg dw 0ffffh
+oldInt2F_addr dw 0, 0
+XMS_control dw 0, 0
+Handle_begin dw 0
+cvtOfs dw 0 ; DOS 3.0 equ 0 and above DOS 4.0 is 1
+org 104h
+db 0dh
+db Revision
+db ??date
+db 26
+org 114h
+tsrLength dw 0
+MachineID db 0FCh ; IBM PC/AT
+
+AuxHotKey db 0 ; 2Dh ; 'X' Scan Code
+AuxHotKeyName db 'X$ '
+Power db True
+Flag db '!'
+Kbd102 db 0
+NoFlag db 0
+StopFlag db 1
+DosEnv dw 0
+WorkSeg dw 0
+PrevDataSeg dw 0
+Copies db '1'
+old_8259 db 0 ; 21h port
+db 0 ; a1h port
+
+Status dw 0
+XMSbit equ 00000001b
+EMSbit equ 00000010b
+SKbit equ 10000000b
+
+GoINT1C: db 0eah
+oldInt1C_addr dw 0, 0
+newINT1C:
+test cs:Status, SKbit
+jnz GoINT1C
+cmp cs:StopFlag, 0
+jz @@0
+;
+; Mr. Lei 2/8/1993
+; Problem: if WPS quit and reenter, old RI cann't control keyboard. ;
+push ds
+push ax
+xor ax, ax
+mov ds, ax
+mov ax, ds:[94]
+cmp ax, offset NewInt9
+pop ax
+pop ds
+jnz GoINT1C
+mov cs:StopFlag, 0
+
+@@0: push ax
+push ds
+push es
+xor ax, ax
+mov ds, ax
+mov es, ds:[94+2]
+cmp word ptr es:[101h], 'IE' ; 'LEI'
+jz @@1
+cli
+mov cs:StopFlag, 1
+mov ax, ds:[94]
+mov cs:oldINT9_addr2, ax
+mov ax, ds:[94+2]
+mov cs:oldINT9_addr2[2], ax
+mov ds:[94], offset newINT9_2
+mov ds:[94+2], cs
+sti
+@@1: pop es
+pop ds
+pop ax
+jmp GoINT1C
+
+; ----------------------------------------------------------------------
+; INT2F Func
+;
+; AX = C0D7h Return RI segment in AX
+; AX = C0D8h Removes all TSR programs after RI
+; AX = C0D9h Removes all TSR programs include RI
+; AX = C0DAh Removes all RI copies
+; ----------------------------------------------------------------------
+
+newINT2F:
+cmp ax, 0c0d7h ; LEI Hanzi GB Code
+jnz @@1
+push cs
+pop ax
+iret
+@@1: cmp ax, 0c0d7h+1
+jnz @@2
+jmp KeepSelf
+@@2: cmp ax, 0c0d7h+2
+jnz @@3
+jmp NoKeepSelf
+@@3: cmp ax, 0c0d7h+3
+jnz @@9
+mov cs:NextDataSeg, -1
+mov cs:Copies, '1'
+jmp NoKeepSelf
+@@9: jmp dword ptr cs:oldInt2F_addr
+
+
+CallInt9:
+ret
+
+
+newINT9_2:
+mov cs:NoFlag, 1
+pushf
+db 9ah ; call far ptr oldint9_addr
+oldInt9_Addr2 dw 0, 0
+jmp newINT9_proc
+
+newINT9:
+pushf
+db 9ah ; call far ptr oldint9_addr
+oldInt9_Addr dw 0, 0 cmp cs:NoFlag, 0
+jz newINT9_proc
+mov cs:NoFlag, 0
+iret
+newINT9_proc:
+cmp cs:Flag, '!' ; busy ?
+jnz @@0
+iret
+@@0:
+mov cs:Flag, '!' ; set busy flag
+push ax ; cmp hot key
+push bx
+push es
+mov ax,40h
+mov es,ax
+
+cmp cs:AuxHotKey, 0
+jz @@_1
+mov bx, es:[1ah]
+cmp bx, es:[1ch]
+jz @@10
+push bx
+mov bl, es:[bx+1]
+cmp bl, cs:AuxHotKey
+pop bx
+jnz @@10
+@@_1:
+mov ah,es:[17h] ; test CTRL SHIFT ALT
+mov al,cs:HotKey
+push ax
+and ax,0f0fh
+cmp al,ah
+pop ax
+jnz @@10 cmp cs:Kbd102, True
+jnz @@1
+shr al, 1
+shr al, 1
+shr al, 1
+shr al, 1
+push ax
+mov ah, es:[18h]
+and ax, 303h
+cmp al, ah
+pop ax
+jnz @@10
+mov ah, es:[96h]
+shr ax, 1
+shr ax, 1
+and ax, 303h
+cmp al, ah
+jnz @@10 cmp cs:AuxHotKey, 0
+jz @@_3
+inc bx
+inc bx
+cmp bx, 3eh
+jb @@_2
+mov bx, 1eh
+@@_2:
+mov es:[1ah], bx
+@@_3:
+call IsWinDos
+or ax, ax
+jz @@1
+call Beep
+@@10:
+sti
+pop es
+pop bx
+pop ax
+mov cs:Flag, ' ' ; no busy
+iret
+@@1: ; OK
+pop es
+pop bx
+pop ax
+
+KeepSelf:
+call RemoveTSR
+push es
+mov es,cs:WorkSeg
+mov dx,es:tsrLength
+mov di,dx
+mov al,0h ; Aug 24, 1993
+mov cx,100h
+rep stosb
+pop es
+int 27h
+
+NoKeepSelf:
+mov ax,0e07h
+int 10h
+mov cs:clsStr, 47h ; Color (White in Red)
+call RemoveTSR
+dec cs:Copies
+call RestoreSelfIntVec
+push es
+cmp cs:PrevDataSeg, 0
+jz @@1
+mov es, cs:PrevDataSeg
+mov es:NextDataSeg, -1
+@@1: pop es
+mov ax, 4c00h
+int 21h
+
+; ---------------------------------------------------------------------------
+
+IsWinDOS:
+mov ax, 1600h
+int 2fh
+cmp al, 01h
+jz @@9 cmp al, 0ffh
+jz @@9 ; Windows/386 Version 2.X
+cmp al, 00h
+jz @@1 cmp al, 80h
+jnz @@9 ; Windows 3 in enhanced mode
+; Version number in AL/AH
+@@1:
+mov ax, 4680h
+int 2fh
+cmp al, 80h
+jnz @@9
+xor ax, ax
+jmp @@10
+@@9: mov ax, 1
+@@10: ret
+
+; -----------------------------------------------------------------------
+RestoreSelfIntVec:
+cmp Copies, '0'
+jz @@0
+ret
+@@0:
+cli
+push cs
+pop ds
+xor ax, ax
+mov es, ax
+mov si, offset oldInt9_Addr
+mov di, 94
+movsw
+movsw
+mov si, offset oldInt2F_Addr
+mov di, 2Fh4
+movsw
+movsw
+mov si, offset oldInt1C_Addr
+mov di, 1Ch4
+movsw
+movsw
+sti
+ret
+
+; ------------- KERNEL PROGRAM ----------------------------------------------
+RemoveTSR:
+pop ax
+cli ; Set stack
+mov sp, cs
+mov ss, sp
+mov sp, 100h
+sti
+push ax
+
+cmp cs:Power, True
+jnz @@1
+call Init8259
+@@1:
+push cs
+pop ds
+@@_0:
+mov ax,ds:NextDataSeg
+cmp ax, -1
+jz @@_1
+mov cs:PrevDataSeg, ds
+mov ds, ax
+jmp @@_0
+@@_1: mov si,ds:DataBegin
+mov cs:WorkSeg, ds
+lodsw
+cmp ax, 'XX'
+jz @@_2
+call Beep
+ret
+@@_2:
+call RestoreEnvStr
+call RestoreMCB ; restore current mcb
+call CloseFiles
+call RestorePort
+call RestoreLEDs
+call RestoreVecList ; Restore vectors list
+call RestoreFloppyParam
+cmp cs:Power, True
+jnz @@2
+call RestoreCVTchain ; Restore cvt chain
+call RestoreMemoryManager
+@@2:
+call RestoreBiosData
+call Enable8259
+mov ah, 1 int 16h
+
+call RestoreClockSpeed
+call CloseSpeaker
+call ResetDisk
+call UpdateTime
+
+call ClosePRN
+mov bx,cs:WorkSeg
+mov ah,50h
+int 21h ; Set PSP segment
+mov ax,3 int 10h ; Set display mode
+
+call InitPRN
+call InitMouse
+mov al, cs:Copies
+cmp al, '1'
+ja @@_sh1
+mov cs:ShowCopies, ''
+jmp @@_sh2
+@@_sh1: mov cs:ShowCopies, al
+@@_sh2:
+mov si, offset clsStr
+call ColorPrintStr
+mov cs:Flag, ' ' ; no busy
+cmp Copies, '1'
+jnz @@_end
+mov cs:StopFlag, 0
+@@_end:
+call ClearKB_buffer
+ret
+
+Beep:
+mov ax,0e07h
+int 10h
+ret
+
+; #########################################################################
+
+ClearKB_Buffer:
+push es
+push bx
+mov bx, 0040h
+mov es, bx
+cli
+mov bx, es:[1ah]
+mov es:[1ch], bx
+sti
+pop bx
+pop es
+ret
+
+
+Init8259:
+; cmp cs:Copies, '1'
+; jz @@1
+; ret
+@@1:
+cmp cs:MachineID, 0fch
+ja @@pc_xt
+@@AT:
+mov bx,870h ;
+mov al,0 ;
+out 0F1h,al ;
+jcxz $+2
+jcxz $+2
+mov al,11h ; ICW1
+out 0A0h,al
+jcxz $+2
+jcxz $+2
+out 20h,al
+jcxz $+2
+jcxz $+2
+mov al,bl ; ICW2
+out 0A1h,al
+jcxz $+2
+jcxz $+2
+mov al,bh
+out 21h,al
+jcxz $+2
+jcxz $+2
+mov al,2 ; ICW3
+out 0A1h,al
+jcxz $+2
+jcxz $+2
+mov al,4
+out 21h,al
+jcxz $+2
+jcxz $+2
+mov al,1 ; ICW4
+out 0A1h,al
+jcxz $+2
+jcxz $+2
+out 21h,al
+jcxz $+2
+jcxz $+2
+mov al,0FFh ; OCW1
+out 0A1h,al
+jcxz $+2
+jcxz $+2
+out 21h,al
+ret
+@@PC_XT:
+mov al,13h ; ICW1
+out 20h,al
+jcxz $+2
+jcxz $+2
+mov al,8 ; ICW2
+out 21h,al
+jcxz $+2
+jcxz $+2
+mov al,9 ; ICW4
+out 21h,al
+jcxz $+2
+jcxz $+2
+mov al,0FFh ; OCW1
+out 21h,al
+ret
+
+Enable8259:
+mov ax, word ptr cs:old_8259
+out 021h,al
+jcxz $+2
+jcxz $+2
+mov al,ah
+out 0a1h,al ; DEC PC Bus Mouse
+ret ; July 1994 by Mr. Lei
+
+; -------------------------------------------------------------------------
+
+RestoreBiosData:
+lodsw
+cmp ax, '--'
+jz @@1
+call Beep
+ret
+@@1: push es
+push di
+mov di, 40h
+mov es, di
+
+mov di, 10h
+movsw
+mov di, 0a8h ; [40h:a8h]
+movsw
+movsw
+mov di, 49h
+mov cx, 1dh
+rep movsb
+
+mov di, 0f0h ; User data
+mov cx, 8
+rep movsw
+
+pop di
+pop es
+ret
+
+; -------------------------------------------------------------------------
+
+RestoreMCB:
+push ds
+push es
+lodsw ; 'MZ'
+@@0: lodsw
+cmp ax, 'MM'
+jz @@1
+mov es,ax
+xor di,di
+movsb
+movsw
+movsw
+inc ax
+mov bx, ds
+cmp ax, bx
+jz @@10
+mov byte ptr es:[8], 0 ; Aug 24, 1993
+@@10: cmp byte ptr es:[0], 'Z'
+jnz @@0
+mov byte ptr es:[10h], 0
+jmp @@0
+@@1:
+pop es
+pop ds
+ret
+
+; -------------------------------------------------------------------------
+CloseFiles:
+mov ax, 5 ; Begin handle
+push ds
+push si
+mov cx, 15 ; Max handle
+sub cx, ax
+inc cx
+mov bx, ax
+@@1: push bx
+push cx
+mov ah, 3eh
+int 21h
+pop cx
+pop bx
+inc bx
+loop @@1
+pop si
+pop ds
+ret
+
+; -------------------------------------------------------------------------
+RestorePort:
+mov di, 40h ; restore port
+mov es, di
+xor di, di
+mov cx, 8
+rep movsw
+ret
+
+; -------------------------------------------------------------------------
+RestoreLEDs:
+lodsb
+and al, 11110000b ; LED status
+mov ah, es:[17h]
+and ah, 00001111b
+or ah, al
+and ah, 0f0h ; Clear CTRL ALT SHIFT
+mov es:[17h], ah
+ret
+
+; -------------------------------------------------------------------------
+RestoreEnvStr:
+lodsw
+push si
+push di
+push ds
+push es
+mov es, cs:DosEnv
+mov ds, ax
+xor si, si
+mov di, si
+@@0: lodsb
+or al, al
+jnz @@1 cmp byte ptr ds:[si], 0
+jz @@2
+@@1: stosb
+jmp @@0
+@@2: stosb
+stosb
+pop es
+pop ds
+pop di
+pop si
+ret
+
+; -----------------------------------------------------------------------
+RestoreVecList:
+xor ax,ax
+mov di,ax
+mov es,ax
+mov cx,100h
+@@0: lodsw
+xchg dx, ax
+lodsw
+cmp dx, 'EL'
+jnz @@1 cmp al, 'I'
+jnz @@1
+sub cl, ah
+push cx
+mov cl, ah
+mov ax, es:[di-4]
+mov dx, es:[di-2]
+@@a: stosw
+xchg ax, dx
+stosw
+xchg ax, dx
+loop @@a
+pop cx
+or cx, cx
+jz @@9
+jmp @@0
+@@1:
+xchg ax, dx
+stosw
+xchg ax, dx
+stosw
+loop @@0
+@@9:
+ret
+
+;----------------------------------------------------------------------------
+RestoreFloppyParam: ; Mr. Lei 2/10/1992
+push es
+push ax
+xor ax, ax
+mov es, ax
+mov byte ptr es:[525h], 2
+pop ax
+pop es
+ret
+
+;---------------------------------------------------------------------------
+RestoreCVTchain:
+lodsw
+cmp ax, 'VC'
+jz @@_0
+call Beep
+ret
+@@_0:
+push ax
+push cx
+push es
+
+; -----------------------------------------------------------------
+lodsw ; DPB
+mov di, ax
+lodsw
+mov es, ax
+@@1: lodsb
+inc di
+stosb
+add di, cs:cvtOfs
+add di, 10h
+movsw
+movsw
+les di, es:[di+2]
+cmp di, -1
+jnz @@1
+
+; -----------------------------------------------------------------
+lodsw ; DCB
+mov di, ax
+lodsw
+mov es, ax
+xor ax, ax
+dec ax
+stosw
+
+; -----------------------------------------------------------------
+lodsw ; Device Driver Chain
+mov di, ax
+lodsw
+mov es, ax
+xor cx, cx
+@@9: push di
+mov cl, 5
+rep movsw
+pop di
+les di, es:[di]
+mov ax, di
+inc ax
+jnz @@9
+pop es
+pop cx
+pop ax
+ret
+
+; ----------------------------------------------------------------------------
+RestoreMemoryManager:
+test cs:Status, XMSbit
+jz @@1
+call LoadXMSstatus
+@@1:
+test cs:Status, EMSbit
+jz @@2
+call LoadEMSstatus
+@@2:
+ret
+
+
+LoadEMSstatus:
+lodsw
+cmp ax, 'ME'
+jz @@_0
+call Beep
+ret
+@@_0:
+lodsw
+mov cx, ax
+xor dx, dx
+@@_1: push ds
+push si
+push dx
+push cx
+
+@@0: cmp dx, ds:[si]
+jz @@1
+add si, 4
+loop @@0
+
+push cx
+mov cx, 5
+@@0: mov ah, 45h ; Deallocate Handle and Memory
+int 67h
+or ah, ah
+jz @@1
+loop @@0
+@@1: pop cx
+
+@@1:
+pop cx
+pop dx
+pop si
+pop ds
+inc dx
+cmp dx, 100h
+jb @@_1
+shl cx, 1
+shl cx, 1
+add si, cx
+ret
+
+
+LoadXMSstatus:
+lodsw
+cmp ax, 'MX'
+jz @@_0
+call Beep
+ret
+@@_0:
+lodsw
+mov cx, ax
+jcxz @@5
+@@1:
+lodsw
+mov dx, ax
+@@2: push dx
+mov ah, 0ah ; free
+call dword ptr cs:xms_control
+or ax, ax
+pop dx
+jnz @@4 cmp bl, 0abh
+jnz @@4
+push dx
+mov ah, 0dh ; unlock
+call dword ptr cs:xms_control
+or ax, ax
+pop dx
+jmp @@2
+@@4: loop @@1
+@@5: ret
+endp
+
+; -----------------------------------------------------------------------
+CloseSpeaker:
+in al, 61h
+and al, 0fch
+out 61h, al
+ret
+
+; -----------------------------------------------------------------------
+RestoreClockSpeed:
+mov al, 00110110b
+out 43h, al
+xor ax, ax
+out 40h, al
+out 40h, al
+ret
+
+; -----------------------------------------------------------------------
+ResetDisk:
+xor ax, ax
+xor dx, dx
+int 13h ; Restore A
+inc dx
+int 13h ; Restore B
+mov dl, 80h
+int 13h ; Restore C
+ret
+
+
+
+; --------------------------------------------------------------------------
+ClosePRN:
+mov ah, 51h ; Get PSP seg
+int 21h
+mov es, bx
+mov ax, es:[16h] ; Prev PSP seg
+cmp ax, bx
+jnz @@9
+mov ax, 3e00h ; COMMAND
+mov bx, 4 int 21h
+@@9:
+ret
+
+InitPRN:
+mov ax, 3e00h
+mov bx, 4 ; PRN
+int 21h
+mov ax, 3d01h
+mov dx, offset PRNname
+push cs
+pop ds
+int 21h
+ret
+PRNname db 'PRN',0
+
+InitMouse: ; 2/16/1993 by Mr. Lei
+push es
+xor ax, ax
+mov es, ax
+cmp word ptr es:[33h4+2], 0
+jz @@0 cmp word ptr es:[33h4], 0
+jz @@0
+mov ax, 21h
+int 33h ; Hook Mouse Interrupt
+@@0: pop es
+ret
+
+; ------------- CMOS CLOCK set to System -----------------------------------
+UpdateTime:
+call GetRealTime
+mov ah, 2dh
+int 21h
+ret
+
+GetRealTime:
+mov ah,2 int 1Ah
+mov al,ch
+call bcdxchg
+mov ch,al
+mov al,cl
+call bcdxchg
+mov cl,al
+mov al,dh
+call bcdxchg
+mov dh,al
+mov dl,0
+ret
+
+BCDxchg:
+push ax
+push cx
+mov cl,4
+shr al,cl
+pop cx
+mov bl,0Ah
+mul bl
+pop bx
+and bl,0Fh
+add al,bl
+ret
+
+; -----------------------------------------------------------------------
+; Display string
+ColorPrintStr:
+lodsb
+mov bh, al ; color
+xor cx, cx
+mov dx, 014fh
+mov ax, 0600h
+int 10h
+
+mov ah, 02 ; GotoXY (0, 0)
+xor dx, dx
+mov bh, 0 int 10h
+PrintStr:
+push cs
+pop ds
+xor bx, bx
+@@1: lodsb
+cmp al, '$'
+jz @@2
+or al, al
+jz @@2
+mov ah, 0eh
+int 10h
+jmp short @@1
+@@2: mov al, cs:clsStrcolor
+mov cs:clsStr, al
+ret
+
+; -----------------------------------------------------------------------
+Self dw 0
+clsStrcolor db 17h
+clsStr db 17h ; Color (White in Blue)
+db ' RAMinit Version 2.12 (c) 1989-1994 by KingSoft Ltd. Mr. Leijun'
+db 0dh,0ah
+db ' ['
+ShowCopies db ''
+db '] Activate...',0ah,0dh,'$'
+
+endTSR equ $
+mcbList equ offset endTSR + 2 + 2
+vecList equ mcbList + 710 + 2 + 10h + 1 + 400h
+devLink equ vecList + 4 + 5  26 + 4 + 10  30h + 4
+xmsList equ devLink + 2 + MaxHandles  2
+emsList equ xmsList + 4 + 1024
+crtMode equ emsList + 2 + 1Dh + 4 + 10h
+tsrLen equ crtMode + 1
+;
+; DOS Environment Reserved by RI
+; --------------------------------------------------
+; Flag 'XX' 2 bytes
+; Environment Segment 1 word
+; Free MCBs &amp;lt;=710 bytes
+; MCB segment 1 word
+; MCB 5 bytes
+; End flag 'MM' 1 word
+; COM LPT ports 10h bytes
+; LEDs status 1 bytes
+; Packed vectors list &amp;lt;=400h bytes
+; Flag 'CV' 2 bytes
+; CVT First DPB pointer 4 bytes
+; DPBs data &amp;lt;=526 bytes
+; First DCB pointer 4 bytes
+; Pointer to NUL 4 bytes
+; All device driver datas &amp;lt;=30h10 bytes
+; Flag 'XM' 2 bytes
+; XMS free handle counter 2 bytes
+; EMS free handle list &amp;lt;=100h4 bytes
+; Flag 'EM' 2 bytes
+; EMS free handle counter 2 bytes
+; EMS free handle list &amp;lt;=1024 bytes
+; EMS handle 1 word
+; Number of pages 1 word
+; Flag '--' 1 word
+; Equipment List 1 word
+; CRT 40:49h-66h 1dh bytes
+; 40:A8h 1 dword
+; BIOS User Data Area 40:F0--FF 10h bytes
+; **
+;
+main: jmp main0
+
+Print Macro Str
+Lea dx, Str
+call DisplayStr
+endm
+
+InstMsg db 'RAMinit Version 2.12 '
+db 'Copyright (c) 1989-1994 by KingSoft Ltd. ',0dh,0ah,'$'
+Msg0 db 'Already installed !',0dh,0ah,0ah
+db 'For Help, type &quot;RI /?&quot;. ',0dh,0ah,'$'
+Msg_0 db 0ah,'Residents a new RAMinit copy [y/n] ? $'
+Msg_2 db 'OK, RI No.'
+Msg_RI db '2'
+db ' residents successful !', 0dh,0ah,'$'
+Msg1 db 'Activate with: $'
+KeyMsg db 'Right_Shift$'
+db 'Left_Shift$ '
+KMsg1 db 'Left_Ctrl$ '
+db 'Left_Alt$ '
+db 'Right_Ctrl$ '
+db 'Right_Alt$ '
+KMsg2 db 'Ctrl$ '
+db 'Alt$ '
+db 'Ctrl$ '
+db 'Alt$ '
+PlusMsg db ' + $'
+crlf db 0dh,0ah,'$'
+
+HelpMsg db 'Programmed by Mr. Leijun Dec 1992', 0dh,0ah,0ah
+db 'Usage: RI [options]',0dh,0ah,0ah
+db '/H,/? Display this screen',0dh,0ah
+db '/CLS Removes all TSR programs after current RI',0dh,0ah
+db '/RET Removes TSR programs include current RI',0dh,0ah
+db '/NEW Residents a new data copy of current environment',0dh,0ah
+db '/ALL Removes all RI copies and all other tsr programs',0dh,0ah
+db '/Sxyy.. Define Hotkey x=AuxHotkey yy..=shift status',0dh,0ah
+db ' x=auxiliary hotkey (default is &quot;X&quot;) ',0dh,0ah
+db ' x equ &quot;1&quot; means need AuxHotkey',0dh,0ah
+db ' yy..=shift status [CAScas]',0dh,0ah
+db ' C: Left Ctrl A: Left Alt S: Left Shift',0dh,0ah
+db ' c: Right Ctrl a: Right Alt s: Right Shift',0dh,0ah,0ah
+db 'Example: &quot;RI /S1c&quot; means Hotkey is Right_Ctrl+X',0dh,0ah
+db ' &quot;RI /S0Cc&quot; means HotKey is Left_Ctrl+Right_Ctrl',0dh,0ah
+db ' &quot;RI /CLS&quot; equals simply press hotkey',0dh,0ah
+db ' &quot;RI /RET&quot; Removes all TSRs after current RI and this RI',0dh,0ah
+db 0ah
+db 'Contact me for RAMinit problems: (01)2561155 Call 1997',0dh,0ah
+db '$'
+ErrMsg db 'ERROR: Invalid options !',0dh,0ah,0ah,'$'
+WinErr db 7, 'Sorry, I cannot work in Windows DOS environment.',0dh,0ah,'$'
+SetMsg db 7, 'Defines new Hotkey successful !',0dh,0ah,0ah,'$'
+tsrOK db False
+
+Main0:
+cld
+Print instMsg
+call IsWinDos
+or ax, ax
+jz @@1
+Print WinErr
+mov ax, 4c00h
+int 21h
+@@1:
+call HotKeyValid
+mov cs:Status, 0
+call EMS_test
+call CmpDosVer
+call CmpSideKick
+call GetMachineID
+call ModifyHotKeyPrompt
+
+mov ax, 0c0d7h
+int 2fh
+mov es, ax
+cmp word ptr es:[101h], 'IE' ; 'LEI'
+jnz @@0
+mov cs:Self, ax
+@@0:
+call CmdLine
+call PrintHotKeyPrompt
+
+cmp cs:tsrOK, true
+jz @@2
+call tsrReplyOK
+@@2: cmp cs:tsrOK, true
+jnz @@_2
+call PrintCopies
+@@_2:
+mov word ptr cs:[100h], 'EL'
+mov byte ptr cs:[102h], 'I'
+
+push cs
+pop es
+push cs
+pop ds
+std
+mov si, offset eof
+mov cx, eof - offset Here
+mov di, tsrLen
+add di, cx
+inc cx
+rep movsb
+cld
+mov bx, tsrLen
+jmp bx
+
+Here:
+mov ax,cs
+mov es,ax
+mov di,offset endTSR
+mov cs:DataBegin, di
+mov cs:NextDataSeg, -1
+mov ax, 'XX'
+stosw
+in al, 0a1h
+mov ah, al
+in al, 21h
+push ax
+mov word ptr cs:old_8259, ax
+xor ax, ax
+out 21h,al ; CLI
+call SaveOthers
+call SetSelfInt
+call BackupVecList
+cmp cs:Power, true
+jnz @@20
+call BackupCVTchain
+call BackupMemoryManager
+@@20:
+call BackupBiosData
+
+sti
+mov cs:Flag, ' ' ; no busy
+mov cs:StopFlag, 0 ;
+
+mov cs:tsrLength, di
+call SetDosEnvSeg
+cmp cs:Self, 0
+jz @@29
+push cs
+pop ds
+push cs
+pop es
+cld
+mov cx, cs:tsrLength
+mov si, cs:DataBegin
+sub cx, si
+mov di, 120h
+mov cs:DataBegin, di
+rep movsb
+mov cs:tsrLength, di
+@@29:
+pop ax
+out 21h, al ; STI
+mov al, ah
+out 0a1h, al
+mov dx, cs:tsrLength
+inc dx
+int 27h
+
+; ----------------------------------------------------------------------------
+SetDosEnvSeg:
+push ds
+push es
+mov ax, cs
+@@10: mov es, ax
+mov ax, es:[16h] ; Get father process psp segment
+or ax, ax
+jz @@11
+mov bx, es
+cmp ax, bx
+jnz @@10
+@@11:
+mov es, word ptr es:[2ch] ; Get father process env segment
+mov cs:DosEnv, es
+pop es
+pop ds
+ret
+
+; ----------------------------------------------------------------------------
+
+SaveOthers:
+mov ax, cs:[2ch] ; Env Seg
+stosw
+call backupMCB ; Current MCB
+mov ax, 40h ; COM LPT Port
+mov ds, ax
+mov si, 0h
+mov cx, 8
+rep movsw
+
+mov si, 17h ; LED status
+lodsb
+stosb
+; call OpenLEDs
+ret
+
+; --------------------------------------------------------------------------
+backupMCB:
+mov ax, 'ZM'
+stosw
+push ds
+push es
+mov ah, 52h
+int 21h ; Get MCB chain head
+mov ax, es:[bx-2]
+pop es
+@@0: mov ds, ax
+cmp byte ptr ds:[0], 'Z' ; End ?
+jz @@20 cmp byte ptr ds:[0], 'M' ; Memory control block
+jnz @@30 cmp word ptr ds:[3], 0 ; Nul mcb
+jz @@10 cmp word ptr ds:[1], 0 ; Free MCB
+jnz @@10
+call SaveFreeMCB
+@@10: inc ax
+add ax, ds:[3]
+jmp @@0
+@@20:
+call SaveFreeMCB
+cmp ax, 0a000h
+inc ax
+jnb @@30
+mov ax, 9fffh ; MS-DOS UMB
+jmp @@0
+
+@@30:
+cmp ax, 0c000h ; 386MAX
+ja @@90
+mov ax, 0c020h
+jmp @@0
+
+@@90: ; Error ?
+pop ds
+mov ax, 'MM' ; Set MCB flag
+stosw
+ret
+
+SaveFreeMCB:
+stosw
+xor si,si
+movsb
+movsw
+movsw
+ret
+;
+; push ax
+; stosw
+; xor si,si
+; movsb
+; movsw
+; movsw
+; pop ax
+; cmp ax, 09fffh
+; jnb @@3
+; push ax
+; push ds
+; mov ds,ax
+; cmp byte ptr ds:[0], 'M'
+; pop ds
+; pop ax
+; jnz @@4
+; mov ax, 09fffh ; MS-DOS UMB
+; jmp @@0
+; @@4: cmp ax, 0c000h
+; ja @@3
+; mov ax, 0c020h ; 386MAX
+; jmp @@0
+;
+; --------------------------------------------------------------------------
+
+OpenLEDs: push ax ; Open all LEDs
+or al, 070h
+mov ds:[17h], al
+mov ah, 1 int 16h
+mov cx, 4 ; Delay
+@@20: push cx
+xor cx, cx
+@@21: loop @@21
+pop cx
+loop @@20
+pop ax
+mov ds:[17h], al
+mov ah, 1 int 16h
+ret
+
+; --------------------------------------------------------------------------
+SetSelfInt:
+push es
+push di
+
+cmp cs:self, 0
+jnz @@1
+push cs
+pop ds
+mov ax,3509h
+int 21h
+mov word ptr cs:oldInt9_addr,bx
+mov word ptr cs:oldInt9_addr[2],es
+mov dx,offset NewInt9
+mov ax,2509h
+int 21h
+
+mov ax,352Fh
+int 21h
+mov word ptr cs:oldInt2F_addr,bx
+mov word ptr cs:oldInt2F_addr[2],es
+mov dx,offset newInt2F
+mov ax,252Fh
+int 21h
+
+mov ax,351Ch
+int 21h
+mov word ptr cs:oldInt1C_addr,bx
+mov word ptr cs:oldInt1C_addr[2],es
+mov dx,offset newInt1C
+mov ax,251ch
+int 21h
+cli
+jmp @@2
+@@1:
+mov es, cs:Self
+inc es:Copies
+@@_0: cmp es:NextDataSeg, -1
+jz @@_1
+mov es, es:NextDataSeg
+jmp @@_0
+@@_1: mov es:NextDataSeg, cs
+@@2:
+pop di
+pop es
+ret
+
+; -----------------------------------------------------------------------
+SaveCounter:
+mov word ptr es:[di], 'EL'
+mov byte ptr es:[di+2], 'I'
+mov byte ptr es:[di+3], bl
+xor bx, bx
+add di, 4
+ret
+
+; -----------------------------------------------------------------------
+DisplayStr: push cs
+pop ds
+mov ah, 9 int 21h
+ret
+
+; -----------------------------------------------------------------------
+CmdLine:
+push cs
+pop ds
+xor ax, ax
+mov si, 80h
+lodsb
+or al, al
+jnz @@1
+ret
+@@1:
+mov cx, ax
+dec ax
+push ax
+push si
+@@0: lodsb
+cmp al, ' '
+jz @@0 cmp al, '/'
+jnz @@2
+lodsb
+cmp al, 'S'
+jz @@_2
+cmp al, 's'
+jnz @@2
+@@_2:
+call SetHotKey
+Print SetMsg
+mov ax, 4c00h
+int 21h
+@@2:
+pop si
+pop ax
+push ax
+push si
+@@_3: lodsb
+cmp al, 'A'
+jb @@3 cmp al, 'Z'
+ja @@3
+add byte ptr ds:[si-1],20h ; DownCase
+@@3: loop @@_3
+pop si
+pop cx
+
+add si, cx
+lodsb
+cmp al, 's' ; CLS
+jnz @@5 cmp word ptr ds:[si-3], 'lc'
+jnz @@5 cmp cs:Self, 0
+jz @Err
+mov ax, 0c0d7h+1 int 2fh
+
+@@5: cmp al, 'h' ; HELP
+jz @help
+cmp al, '?'
+jz @help
+cmp al, 't' ; RET
+jnz @@6 cmp word ptr ds:[si-3], 'er'
+jnz @@6
+@@7:
+cmp cs:Self, 0
+jz @Err
+mov ax, 0c0d7h+2 int 2fh
+@@6: cmp al, 'w' ; NEW
+jnz @@8 cmp word ptr ds:[si-3], 'en'
+jnz @@8
+mov cs:tsrOK, true
+ret
+@@8:
+cmp al, 'l' ; ALL
+jnz @@9 cmp word ptr ds:[si-3], 'la'
+jnz @@9
+mov ax, 0c0d7h+3 int 2fh
+@@9:
+cmp al, ' '
+jnz @Err
+ret
+
+@Err:
+Print ErrMsg
+@help:
+Print HelpMsg
+mov ax, 4c00h
+int 21h
+
+;---------------------------------------------------------------------------
+tsrReplyOK:
+cmp cs:Self, 0
+jz @@1
+Print Msg0
+
+push es
+mov ax, cs:Self
+@@_10: mov es, ax
+mov ax, es:NextDataSeg
+cmp ax, -1
+jnz @@_10
+mov ax, es
+
+@@_0: push ax
+dec ax
+mov es, ax
+mov bx, es:[3]
+pop ax
+
+add ax, bx
+inc ax
+mov es, ax
+cmp word ptr es:[0], 'OC'
+jz @@_0
+
+mov bx, cs
+cmp ax, bx
+pop es
+jz @@2
+Print Msg_0
+mov ah, 1 int 21h
+
+push ax
+Print crlf
+pop ax
+
+cmp al, 'y'
+jz @@3 cmp al, 'Y'
+jz @@3
+@@2: ; Print Msg_1
+mov ax, 4c01h
+int 21h
+@@3:
+@@1: mov cs:tsrOK, true
+ret
+
+PrintCopies:
+cmp cs:Self, 0
+jz @@1
+push es ; Added -by- Mr. Lei
+mov es, cs:Self ; Aug 24, 1993
+mov al, es:Copies
+inc al ; Total RI copies
+push ax ; Set es = current mcb
+mov ax, cs
+dec ax
+mov es, ax
+pop ax
+mov cx, 5 ; Search end of file name
+mov bx, 8
+@@10: inc bx
+cmp byte ptr es:[bx], 20h
+jz @@20 cmp byte ptr es:[bx], 0ffh
+jz @@20 cmp byte ptr es:[bx], 00h
+jz @@20
+loop @@10
+@@20: ; Set current RI no
+mov byte ptr es:[bx], ':' ; &quot;RI:2&quot;
+mov byte ptr es:[bx+1], al
+cmp bx, 8+7
+jnb @@30
+mov byte ptr es:[bx+2], 0
+@@30:
+pop es
+
+mov cs:Msg_RI, al
+Print Msg_2
+@@1: ret
+
+;---------------------------------------------------------------------------
+; Backup Interrupt Vector List
+;
+BackupVecList:
+push ds
+push cs
+pop es
+xor si,si ; Vectors
+mov ds,si
+movsw
+movsw
+xor bx, bx
+mov cx,00ffh
+@@0: lodsw
+xchg dx, ax
+lodsw
+cmp ax, es:[di-2]
+jnz @@1 cmp dx, es:[di-4]
+jz @@2
+@@1: or bx, bx
+jz @@3
+call SaveCounter
+@@3: xchg dx, ax
+stosw
+xchg dx, ax
+stosw
+loop @@0
+jmp @@4
+@@2: inc bx
+loop @@0
+call SaveCounter
+@@4:
+pop ds
+ret
+;
+;-----------------------------------------------------------------------------
+BackupCVTchain:
+mov ax, 'VC'
+stosw
+push ax
+push bx
+push cx
+push ds
+push es
+mov ah, 52h
+int 21h ; ES:BX -- DOS table as described below
+
+; --------------------------------------------------------------------
+push es ; DPB chains
+push bx
+lds si, es:[bx]
+push cs
+pop es
+mov ax, si
+stosw
+mov ax, ds
+stosw
+mov bx, cs:cvtOfs
+xor cx, cx
+@@1: mov al, ds:[si+1]
+stosb
+mov ax, ds:[si+bx+12h]
+stosw
+mov ax, ds:[si+bx+14h]
+stosw
+inc cx
+lds si, ds:[si+bx+18h]
+cmp si, -1
+jnz @@1
+; mov ax, 5
+; mul cl
+; add ax, 4
+; add cs:tsrLength, ax
+pop bx
+pop es
+
+; --------------------------------------------------------------------
+push es ; DCB file control blocks
+push bx
+les bx, es:[bx+4]
+@@11: cmp word ptr es:[bx], -1
+jz @@10
+les bx, es:[bx]
+jmp @@11
+@@10:
+mov ax, es
+xchg ax, bx
+push cs
+pop es
+stosw
+xchg ax, bx
+stosw
+pop bx
+pop es
+; add cs:tsrLength, 4
+
+; ---------------------------------------------------------------------
+push es ; Device Driver Chains
+pop ds
+add bx, 22h
+mov si, bx ; NUL
+
+pop es
+mov ax, si
+stosw
+mov ax, ds
+stosw
+xor cx, cx
+xor bx, bx
+@@9: push si
+mov cl, 5
+rep movsw
+inc bx
+pop si
+lds si, ds:[si]
+mov ax, si
+inc ax
+jnz @@9
+
+pop ds
+pop cx
+pop bx
+pop ax
+ret
+
+; ----------------------------------------------------------------------------
+
+BackupBiosData:
+mov ax, '--'
+stosw
+push ds
+push si
+mov si, 40h
+mov ds, si
+mov si, 10h
+movsw
+mov si, 0a8h
+movsw
+movsw
+mov si, 49h
+mov cx, 1dh
+rep movsb
+
+mov si, 0f0h
+mov cx, 8
+rep movsw
+pop si
+pop ds
+ret
+
+; ---------------------------------------------------------------------------
+
+BackupMemoryManager:
+push cs
+pop es
+push ds
+push es
+call SaveXMSstatus
+call SaveEMSstatus
+pop es
+pop ds
+ret
+
+;---------------------------------------------------------------------
+
+SaveEMSstatus:
+test cs:status, EMSbit
+jnz @@1
+ret
+@@1:
+mov ax, 'ME'
+stosw
+inc di
+inc di
+push di
+mov ah, 4dh
+int 67h
+pop di
+mov es:[di-2], bx
+shl bx, 1
+shl bx, 1
+add di, bx
+ret
+; -------------------------------------------------------------------
+
+SaveXMSstatus:
+call XMS_test
+test cs:status, XMSbit
+jnz @@1
+ret
+@@1:
+mov ax, 'MX'
+stosw
+
+mov dx, 1
+call XMS_alloc
+jnz @@_1
+xor cx, cx ; XMS alloc failure
+stosw
+ret
+@@_1:
+push dx
+sub dx, MaxHandles  10
+@@2:
+push dx
+call XMS_Lock
+pop dx
+jnz @@3 cmp bl, 0a2h
+jnz @@4
+add dx, 10
+jmp @@2
+@@3: push dx
+call XMS_unlock
+pop dx
+@@4:
+mov cs:handle_begin, dx
+pop dx
+push dx
+call XMS_bstat
+xor cx, cx
+mov cl, bl
+inc cx
+pop dx
+call XMS_Free
+mov dx, cs:Handle_begin
+
+push cx
+push cs
+pop es
+mov ax, cx
+stosw
+@@5: push dx
+call XMS_Lock
+pop dx
+jnz @@6 cmp bl, 0a2h ; Handle invalid
+jz @@7
+@@6: call XMS_unlock
+add dx, 10
+jmp @@5
+@@7: mov ax, dx
+stosw
+add dx, 10
+loop @@5
+pop cx
+ret
+; ------------------------------------------------------------------
+
+XMS_test:
+push es
+mov ax, 4300h
+int 2fh
+cmp al, 80h
+jnz @@9
+mov ax, 4310h
+int 2fh
+mov cs:XMS_control, bx
+mov cs:XMS_control[2], es
+or cs:Status, XMSbit
+@@9:
+pop es
+ret
+
+XMS_stat:
+mov ah, 0
+call dword ptr cs:xms_control
+mov hma_exist, dl
+ret
+hma_exist db 0
+
+XMS_alloc:
+mov ah, 9
+call dword ptr cs:xms_control
+or ax, ax
+ret
+
+XMS_lock:
+mov ah, 0ch
+call dword ptr cs:xms_control
+or ax, ax
+ret
+
+XMS_unlock:
+mov ah, 0dh
+call dword ptr cs:xms_control
+or ax, ax
+ret
+XMS_bstat:
+mov ah, 0eh
+call dword ptr cs:xms_control
+or ax, ax
+ret
+
+XMS_free:
+mov ah, 0ah
+call dword ptr cs:xms_control
+or ax, ax
+ret
+
+; ----------------------------------------------------------------------------
+EMS_test:
+push cs
+pop ds
+mov dx, offset EMMname
+mov ax, 3d00h
+int 21h
+jc @@2
+mov bx, ax
+mov ah, 3eh
+int 21h
+or cs:Status, EMSbit
+@@2:
+ret
+EMMname db 'EMMXXXX0',0
+
+; -----------------------------------------------------------------------------
+
+SetHotKey:
+xor bx, bx
+lodsb
+push ax
+
+@@1: lodsb
+cmp al, 0dh
+jz @@9 cmp al, 'C'
+jnz @@2
+or bl, LeftCtrl
+jmp @@1
+@@2:
+cmp al, 'c'
+jnz @@3
+or bl, RightCtrl
+jmp @@1
+@@3:
+cmp al, 'A'
+jnz @@4
+or bl, LeftAlt
+jmp @@1
+@@4:
+cmp al, 'a'
+jnz @@5
+or bl, RightAlt
+jmp @@1
+@@5:
+cmp al, 'S'
+jnz @@6
+or bl, LeftShift
+jmp @@1
+@@6:
+cmp al, 's'
+jnz @@7
+or bl, RightShift
+jmp @@1
+@@7: pop ax
+jmp @Err
+@@9:
+mov cs:HotKey, bl
+pop ax
+mov cs:AuxHotKey, 2dh ; 'X' scan key
+cmp al, '1'
+jz @@29
+mov cs:AuxHotKey, 0
+@@29:
+cmp cs:Self, 0
+jz @@30
+push es
+mov es, cs:Self
+mov es:HotKey, bl
+mov bl, cs:AuxHotKey
+mov es:AuxHotKey, bl
+pop es
+@@30:
+call GetRunFileName
+mov ax, 3d02h
+int 21h
+jc @@10
+push cs
+pop ds
+mov bx, ax
+mov cx, 4
+mov dx, 100h
+mov ah, 40h
+int 21h
+jc @@10
+mov ax, 4200h
+xor cx, cx
+mov dx, 17h
+int 21h
+jc @@10
+mov cx, 1
+mov dx, offset AuxHotKey
+mov ah, 40h
+int 21h
+jc @@10
+mov ah, 3eh
+int 21h
+@@10:
+ret
+
+
+; -----------------------------------------------------------------------
+GetRunFileName:
+; Return:
+; DS:DX Pointer of this run file name ASCIIZ string
+push ax
+push bx
+push cx
+push si
+push di
+push es
+
+push cs
+pop es
+mov ax, es:[2ch]
+mov es, ax
+xor di, di
+mov cx, 1000h
+xor al, al
+@@1: repnz scasb
+cmp es:[di], al
+loopnz @@1
+mov dx, di
+add dx, 3
+push es
+pop ds
+
+pop es
+pop di
+pop si
+pop cx
+pop bx
+pop ax
+ret
+
+; ---------------------------------------------------------------------------
+GetMachineID:
+push es
+mov KBD102,True
+mov ax,40h
+mov es,ax
+test byte ptr es:[96h], 00010000b
+jnz @@1
+mov Kbd102,False
+@@1:
+xor ax,ax
+dec ax
+mov es,ax
+mov al,es:[0eh]
+mov cs:MachineID, al
+pop es
+ret
+
+; ---------------------------------------------------------------------------
+ModifyHotKeyPrompt:
+cmp cs:Kbd102, True
+jz @@9
+push cs
+pop es
+push cs
+pop ds
+mov cx, 124
+mov si, offset KMsg2
+mov di, offset KMsg1
+rep movsb
+@@9: cmp cs:MachineID, 0fch
+jna @@10
+mov cs:clsStrcolor, 70h ; Mono
+mov cs:clsStr, 70h
+@@10:
+ret
+
+; ---------------------------------------------------------------------------
+PrintHotKeyPrompt:
+Print Msg1
+mov al, cs:HotKey
+mov ah, al
+shr al, 1
+shr al, 1
+and ax, 33ch
+or al, ah
+mov dx, offset KeyMsg
+@@40:
+or ax, ax ; Mr. Lei 4/25/1993
+jz @@_42
+shr al, 1
+push ax
+jnc @@41
+
+push ax
+call ColorDisplayStr
+; mov ah, 9
+; int 21h
+pop ax
+
+or al, al
+jz @@42
+
+push dx
+mov dx, offset PlusMsg
+call ColorDisplayStr
+; Print PlusMsg
+pop dx
+
+@@41: add dx, 12
+pop ax
+jmp @@40
+@@42: pop ax
+@@_42: cmp cs:AuxHotKey, 0
+jz @@43 cmp cs:HotKey, 0 ; Mr. Lei
+jz @@_43
+mov dx, offset PlusMsg
+call ColorDisplayStr
+; Print PlusMsg
+@@_43: mov dx, offset AuxHotKeyName
+call ColorDisplayStr
+; Print AuxHotKeyName
+@@43:
+Print crlf
+ret
+
+ColorDisplayStr:
+push bx
+push cx
+push dx
+push si
+mov bl, 0fh
+mov si, dx
+xor bh, bh
+mov cx, 1
+@@1: lodsb
+cmp al, '$'
+jz @@2
+or al, al
+jz @@2
+push cx
+mov ah, 09h
+int 10h
+mov ah, 3 int 10h
+inc dl
+mov ah, 2 int 10h
+pop cx
+jmp short @@1
+@@2:
+pop si
+pop dx
+pop cx
+pop bx
+ret
+
+; ---------------------------------------------------------------------------
+CmpSideKick:
+xor ax, ax
+mov es, ax
+les bx, es:[20h]
+cmp word ptr es:[bx-4], 4b53h
+jnz @@1 cmp word ptr es:[bx-2], 4942h
+jz @@2
+@@1: mov es, ax
+les bx, es:[94h]
+cmp word ptr es:[bx-2], 4b53h
+jz @@2
+ret
+@@2: or cs:Status, SKbit
+ret
+
+; ---------------------------------------------------------------------------
+CmpDosVer: mov ah, 30h
+int 21h
+cmp al, 3
+jb @@1 cmp al, 3
+jna @@2
+mov cs:cvtOfs, 1
+ret
+@@2: mov cs:cvtOfs, 0
+ret
+@@1: Print DosVerErr
+mov ax, 4cffh
+int 21h
+
+DosVerErr db 'Sorry, DOS version too lower !',0dh,0ah,'$'
+
+HotKeyValid:
+cmp cs:HotKey, 0
+jnz @@_1
+cmp cs:AuxHotKey, 0
+jnz @@_1
+Print HotKeyErr
+mov ax, 4cfeh
+int 21h
+@@_1: ret
+
+HotKeyErr db 'Sorry, please setup hotkey again. ',0dh,0ah,'$'
+
+eof:
+ends
+end Start
+
+; ------------- The End ! ---------------------------------------------------
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>Roc J</name></author><category term="code" /><category term="雷军" /><summary type="html">```
+;
+; RI.ASM Revision 2.12 [ July 12, 1994 ]
+Revision equ ‘V2.12 ‘
+;
+; 
+;
+;  RAMinit Release 2.0 
+;  Copyright (c) 1989-1994 by Yellow Rose Software Co. 
+;  Written by Mr. Leijun 
+;
+;  Function: 
+;  Press HotKey to remove all TSR program after this program 
+;
+;</summary></entry><entry><title type="html">【Java】JAVA-基本数据类型-变量类型</title><link href="http://localhost:4000/2017/01/18/JAVA-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B/" rel="alternate" type="text/html" title="【Java】JAVA-基本数据类型-变量类型" /><published>2017-01-18T00:53:33+08:00</published><updated>2017-01-18T00:53:33+08:00</updated><id>http://localhost:4000/2017/01/18/JAVA-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B</id><content type="html" xml:base="http://localhost:4000/2017/01/18/JAVA-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B/">&lt;blockquote&gt;
+  &lt;p&gt;变量就是申请内存来存储值。也就是说，当创建变量的时候，需要在内存中申请空间。
+内存管理系统根据变量的类型为变量分配存储空间，分配的空间只能用来储存该类型数据。
+Java的两大数据类型:
+- 内置数据类型
+- 引用数据类型&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;内置数据类型&lt;/h1&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Java语言提供了八种基本类型。六种数字类型（四个整数型，两个浮点型），一种字符类型，还有一种布尔型。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;byte&quot;&gt;byte&lt;/h2&gt;
+&lt;p&gt;byte数据类型是8位、有符号的以二进制补码表示的整数；
+-128（-2^7）~127（2^7-1）；
+默认值是0；
+例子：byte a = 100&lt;/p&gt;
+
+&lt;h2 id=&quot;short&quot;&gt;short&lt;/h2&gt;
+&lt;p&gt;short数据类型是16位、有符号的以二进制补码表示的整数；
+-32768（-2^15）~32767（2^15 - 1）；
+一个short变量是int型变量所占空间的二分之一；
+默认值是0；
+例子：short s = 1000&lt;/p&gt;
+
+&lt;h2 id=&quot;int&quot;&gt;int&lt;/h2&gt;
+&lt;p&gt;int数据类型是32位、有符号的以二进制补码表示的整数；
+-2,147,483,648（-2^31）~2,147,483,647（2^31 - 1）；
+一般地整型变量默认为int类型；
+默认值是0；&lt;/p&gt;
+
+&lt;h2 id=&quot;long&quot;&gt;long&lt;/h2&gt;
+&lt;p&gt;long数据类型是64位、有符号的以二进制补码表示的整数；
+-（2^63）~（2^63 -1）；
+默认值是0L；
+例子： long a = 100000L&lt;/p&gt;
+
+&lt;h2 id=&quot;float&quot;&gt;float&lt;/h2&gt;
+&lt;p&gt;float数据类型是单精度、32位的浮点数；
+默认值是0.0f；
+浮点数不能用来表示精确的值；
+例子：float f1 = 234.5f。&lt;/p&gt;
+
+&lt;h2 id=&quot;double&quot;&gt;double&lt;/h2&gt;
+&lt;p&gt;double数据类型是双精度、64位浮点数；
+浮点数的默认类型为double类型；
+double类型同样不能表示精确的值；
+默认值是0.0d；
+例子：double d1 = 123.4。&lt;/p&gt;
+
+&lt;h2 id=&quot;boolean&quot;&gt;boolean&lt;/h2&gt;
+&lt;p&gt;boolean数据类型表示一位的信息；
+只有两个取值：true和false；
+默认值是false；
+例子：boolean one = true。&lt;/p&gt;
+
+&lt;h2 id=&quot;char&quot;&gt;char&lt;/h2&gt;
+&lt;p&gt;char类型是一个单一的16位Unicode字符；
+’\u0000’（即为0）~’\uffff’（即为65,535）；
+char数据类型可以储存任何字符；
+例子：char letter = ‘A’。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;例子&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class PrimitiveTypeTest {  
+    public static void main(String[] args) {  
+        // byte  
+        System.out.println(&quot;基本类型：byte 二进制位数：&quot; + Byte.SIZE);  
+        System.out.println(&quot;包装类：java.lang.Byte&quot;);  
+        System.out.println(&quot;最小值：Byte.MIN_VALUE=&quot; + Byte.MIN_VALUE);  
+        System.out.println(&quot;最大值：Byte.MAX_VALUE=&quot; + Byte.MAX_VALUE);  
+        System.out.println();  
+  
+        // short  
+        System.out.println(&quot;基本类型：short 二进制位数：&quot; + Short.SIZE);  
+        System.out.println(&quot;包装类：java.lang.Short&quot;);  
+        System.out.println(&quot;最小值：Short.MIN_VALUE=&quot; + Short.MIN_VALUE);  
+        System.out.println(&quot;最大值：Short.MAX_VALUE=&quot; + Short.MAX_VALUE);  
+        System.out.println();  
+  
+        // int  
+        System.out.println(&quot;基本类型：int 二进制位数：&quot; + Integer.SIZE);  
+        System.out.println(&quot;包装类：java.lang.Integer&quot;);  
+        System.out.println(&quot;最小值：Integer.MIN_VALUE=&quot; + Integer.MIN_VALUE);  
+        System.out.println(&quot;最大值：Integer.MAX_VALUE=&quot; + Integer.MAX_VALUE);  
+        System.out.println();  
+  
+        // long  
+        System.out.println(&quot;基本类型：long 二进制位数：&quot; + Long.SIZE);  
+        System.out.println(&quot;包装类：java.lang.Long&quot;);  
+        System.out.println(&quot;最小值：Long.MIN_VALUE=&quot; + Long.MIN_VALUE);  
+        System.out.println(&quot;最大值：Long.MAX_VALUE=&quot; + Long.MAX_VALUE);  
+        System.out.println();  
+  
+        // float  
+        System.out.println(&quot;基本类型：float 二进制位数：&quot; + Float.SIZE);  
+        System.out.println(&quot;包装类：java.lang.Float&quot;);  
+        System.out.println(&quot;最小值：Float.MIN_VALUE=&quot; + Float.MIN_VALUE);  
+        System.out.println(&quot;最大值：Float.MAX_VALUE=&quot; + Float.MAX_VALUE);  
+        System.out.println();  
+  
+        // double  
+        System.out.println(&quot;基本类型：double 二进制位数：&quot; + Double.SIZE);  
+        System.out.println(&quot;包装类：java.lang.Double&quot;);  
+        System.out.println(&quot;最小值：Double.MIN_VALUE=&quot; + Double.MIN_VALUE);  
+        System.out.println(&quot;最大值：Double.MAX_VALUE=&quot; + Double.MAX_VALUE);  
+        System.out.println();  
+  
+        // char  
+        System.out.println(&quot;基本类型：char 二进制位数：&quot; + Character.SIZE);  
+        System.out.println(&quot;包装类：java.lang.Character&quot;);  
+        // 以数值形式而不是字符形式将Character.MIN_VALUE输出到控制台  
+        System.out.println(&quot;最小值：Character.MIN_VALUE=&quot;  
+                + (int) Character.MIN_VALUE);  
+        // 以数值形式而不是字符形式将Character.MAX_VALUE输出到控制台  
+        System.out.println(&quot;最大值：Character.MAX_VALUE=&quot;  
+                + (int) Character.MAX_VALUE);  
+    }  
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;运行
+```
+基本类型：byte 二进制位数：8
+包装类：java.lang.Byte
+最小值：Byte.MIN_VALUE=-128
+最大值：Byte.MAX_VALUE=127&lt;/p&gt;
+
+&lt;p&gt;基本类型：short 二进制位数：16
+包装类：java.lang.Short
+最小值：Short.MIN_VALUE=-32768
+最大值：Short.MAX_VALUE=32767&lt;/p&gt;
+
+&lt;p&gt;基本类型：int 二进制位数：32
+包装类：java.lang.Integer
+最小值：Integer.MIN_VALUE=-2147483648
+最大值：Integer.MAX_VALUE=2147483647&lt;/p&gt;
+
+&lt;p&gt;基本类型：long 二进制位数：64
+包装类：java.lang.Long
+最小值：Long.MIN_VALUE=-9223372036854775808
+最大值：Long.MAX_VALUE=9223372036854775807&lt;/p&gt;
+
+&lt;p&gt;基本类型：float 二进制位数：32
+包装类：java.lang.Float
+最小值：Float.MIN_VALUE=1.4E-45
+最大值：Float.MAX_VALUE=3.4028235E38&lt;/p&gt;
+
+&lt;p&gt;基本类型：double 二进制位数：64
+包装类：java.lang.Double
+最小值：Double.MIN_VALUE=4.9E-324
+最大值：Double.MAX_VALUE=1.7976931348623157E308&lt;/p&gt;
+
+&lt;p&gt;基本类型：char 二进制位数：16
+包装类：java.lang.Character
+最小值：Character.MIN_VALUE=0
+最大值：Character.MAX_VALUE=65535
+```&lt;/p&gt;
+
+&lt;h1 id=&quot;section-2&quot;&gt;引用类型&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;在Java中，引用类型的变量非常类似于C/C++的指针。引用类型指向一个对象，指向对象的变量是引用变量。这些变量在声明时被指定为一个特定的类型，变量一旦声明后，类型就不能被改变了。&lt;/li&gt;
+  &lt;li&gt;对象、数组都是引用数据类型。&lt;/li&gt;
+  &lt;li&gt;所有引用类型的默认值都是null。&lt;/li&gt;
+  &lt;li&gt;一个引用变量可以用来引用与任何与之兼容的类型。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;java&quot;&gt;Java常量&lt;/h2&gt;
+&lt;p&gt;### 整形和浮点型常量
+使用 &lt;strong&gt;final&lt;/strong&gt; 关键字来修饰常量，声明方式如下（常量通常使用大写字母）：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+final double PI = 3.1415927;
+&lt;/code&gt;
+byte、int、long、和short都可以用十进制、16进制以及8进制的方式来表示。
+当使用常量的时候，前缀0表示8进制，而前缀0x代表16进制：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+int decimal = 100;
+int octal = 0144;
+int hexa = 0x64;
+&lt;/code&gt;
+### Java字符串常量
+Java字符串常量也是包含在两个引号之间的字符序列。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+&quot;Hello World&quot;
+&quot;two\nlines&quot;
+&quot;\&quot;This is in quotes\&quot;&quot;
+&lt;/code&gt;
+字符串常量和字符常量都可以包含任何Unicode字符。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+char a = '\u0001';
+String a = &quot;\u0001&quot;;
+&lt;/code&gt;
+### Java转义字符
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+符号	字符含义
+\n	换行 (0x0a)
+\r	回车 (0x0d)
+\f	换页符(0x0c)
+\b	退格 (0x08)
+\s	空格 (0x20)
+\t	制表符
+\&quot;	双引号
+\'	单引号
+\\	反斜杠
+\ddd	八进制字符 (ddd)
+\uxxxx	16进制Unicode字符 (xxxx)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;java-&quot;&gt;Java 变量类型&lt;/h1&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Java支持的变量类型有：
+局部变量
+成员变量
+类变量&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;java-1&quot;&gt;Java局部变量&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;局部变量声明在方法、构造方法或者语句块中；
+局部变量在方法、构造方法、或者语句块被执行的时候创建，当它们执行完成后，变量将会被销毁；
+访问修饰符不能用于局部变量；
+局部变量只在声明它的方法、构造方法或者语句块中可见；
+局部变量是在栈上分配的。
+局部变量没有默认值，所以局部变量被声明后，必须经过初始化，才可以使用。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;实例1
+在以下实例中age是一个局部变量。定义在pubAge()方法中，它的作用域就限制在这个方法中。
+```
+package com.runoob.test;&lt;/p&gt;
+
+&lt;p&gt;public class Test{ 
+   public void pupAge(){
+      int age = 0;
+      age = age + 7;
+      System.out.println(“小狗的年龄是: “ + age);
+   }&lt;/p&gt;
+
+&lt;p&gt;public static void main(String args[]){
+      Test test = new Test();
+      test.pupAge();
+   }
+}&lt;/p&gt;
+
+&lt;p&gt;运行结果：
+小狗的年龄是: 7
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+实例2
+在下面的例子中age变量没有初始化，所以在编译时会出错：
+&lt;/code&gt;
+public class Test{ 
+   public void pupAge(){
+      int age;
+      age = age + 7;
+      System.out.println(“小狗的年龄是 : “ + age);
+   }&lt;/p&gt;
+
+&lt;p&gt;public static void main(String args[]){
+      Test test = new Test();
+      test.pupAge();
+   }
+}&lt;/p&gt;
+
+&lt;p&gt;运行结果：
+Test.java:4:variable number might not have been initialized
+age = age + 7;
+         ^
+1 error
+```&lt;/p&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;实例变量&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;实例变量声明在一个类中，但在方法、构造方法和语句块之外；
+当一个对象被实例化之后，每个实例变量的值就跟着确定；
+实例变量在对象创建的时候创建，在对象被销毁的时候销毁；
+实例变量的值应该至少被一个方法、构造方法或者语句块引用，使得外部能够通过这些方式获取实例变量信息；
+实例变量可以声明在使用前或者使用后；
+访问修饰符可以修饰实例变量；
+实例变量对于类中的方法、构造方法或者语句块是可见的。一般情况下应该把实例变量设为私有。通过使用访问修饰符可以使实例变量对子类可见；
+实例变量具有默认值。数值型变量的默认值是0，布尔型变量的默认值是false，引用类型变量的默认值是null。变量的值可以在声明时指定，也可以在构造方法中指定；
+实例变量可以直接通过变量名访问。但在静态方法以及其他类中，就应该使用完全限定名：ObejectReference.VariableName。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;实例：
+```
+import java.io.*;
+public class Employee{
+   // 这个成员变量对子类可见
+   public String name;
+   // 私有变量，仅在该类可见
+   private double salary;
+   //在构造器中对name赋值
+   public Employee (String empName){
+      name = empName;
+   }
+   //设定salary的值
+   public void setSalary(double empSal){
+      salary = empSal;
+   }&lt;br /&gt;
+   // 打印信息
+   public void printEmp(){
+      System.out.println(“name  : “ + name );
+      System.out.println(“salary :” + salary);
+   }&lt;/p&gt;
+
+&lt;p&gt;public static void main(String args[]){
+      Employee empOne = new Employee(“Ransika”);
+      empOne.setSalary(1000);
+      empOne.printEmp();
+   }
+}&lt;/p&gt;
+
+&lt;p&gt;运行结果：
+name  : Ransika
+salary :1000.0
+```&lt;/p&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;类变量（静态变量）&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;类变量也称为静态变量，在类中以static关键字声明，但必须在方法构造方法和语句块之外。
+无论一个类创建了多少个对象，类只拥有类变量的一份拷贝。
+静态变量除了被声明为常量外很少使用。常量是指声明为public/private，final和static类型的变量。常量初始化后不可改变。
+静态变量储存在静态存储区。经常被声明为常量，很少单独使用static声明变量。
+静态变量在程序开始时创建，在程序结束时销毁。
+与实例变量具有相似的可见性。但为了对类的使用者可见，大多数静态变量声明为public类型。
+默认值和实例变量相似。数值型变量默认值是0，布尔型默认值是false，引用类型默认值是null。变量的值可以在声明的时候指定，也可以在构造方法中指定。此外，静态变量还可以在静态语句块中初始化。
+静态变量可以通过：&lt;em&gt;ClassName.VariableName&lt;/em&gt;的方式访问。
+类变量被声明为public static final类型时，类变量名称必须使用大写字母。如果静态变量不是public和final类型，其命名方式与实例变量以及局部变量的命名方式一致。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;实例：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+import java.io.*;
+public class Employee {
+    //salary是静态的私有变量
+    private static double salary;
+    // DEPARTMENT是一个常量
+    public static final String DEPARTMENT = &quot;开发人员&quot;;
+    public static void main(String args[]){
+    salary = 10000;
+        System.out.println(DEPARTMENT+&quot;平均工资:&quot;+salary);
+    }
+}
+以上实例编译运行结果如下:
+开发人员平均工资:10000.0import java.io.*;
+public class Employee {
+    //salary是静态的私有变量
+    private static double salary;
+    // DEPARTMENT是一个常量
+    public static final String DEPARTMENT = &quot;开发人员&quot;;
+    public static void main(String args[]){
+    salary = 10000;
+        System.out.println(DEPARTMENT+&quot;平均工资:&quot;+salary);
+    }
+}
+以上实例编译运行结果如下:
+开发人员平均工资:10000.0
+&lt;/code&gt;
+&lt;strong&gt;注意：&lt;/strong&gt;如果其他类想要访问该变量，可以这样访问：&lt;strong&gt;Employee.DEPARTMENT&lt;/strong&gt;。&lt;/p&gt;</content><author><name>Roc J</name></author><category term="java" /><summary type="html">变量就是申请内存来存储值。也就是说，当创建变量的时候，需要在内存中申请空间。
+内存管理系统根据变量的类型为变量分配存储空间，分配的空间只能用来储存该类型数据。
+Java的两大数据类型:
+- 内置数据类型
+- 引用数据类型</summary></entry><entry><title type="html">【Java】JAVA-简介-开发环境-基础语法</title><link href="http://localhost:4000/2017/01/17/JAVA-%E7%AE%80%E4%BB%8B-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" rel="alternate" type="text/html" title="【Java】JAVA-简介-开发环境-基础语法" /><published>2017-01-17T23:53:33+08:00</published><updated>2017-01-17T23:53:33+08:00</updated><id>http://localhost:4000/2017/01/17/JAVA-%E7%AE%80%E4%BB%8B-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95</id><content type="html" xml:base="http://localhost:4000/2017/01/17/JAVA-%E7%AE%80%E4%BB%8B-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">&lt;h1 id=&quot;java-&quot;&gt;Java 简介&lt;/h1&gt;
+
+&lt;p&gt;Java是由Sun Microsystems公司于1995年推出的Java面向对象程序设计语言和Java平台的总称。
+Java分为三个体系：
+&lt;strong&gt;JavaSE&lt;/strong&gt;（J2SE）（Java 2 Platform Standard Edition，java平台标准版）
+&lt;strong&gt;JavaEE&lt;/strong&gt;（J2EE）（Java 2 Platform,Enterprise Edition，java平台企业版）
+&lt;strong&gt;JavaME&lt;/strong&gt;（J2ME）（Java 2 Platform Micro Edition，java平台微型版）&lt;/p&gt;
+
+&lt;h1 id=&quot;java--1&quot;&gt;Java 开发环境&lt;/h1&gt;
+&lt;p&gt;## Windows系统安装Java
+- 下载JDK（Java开发工具包）
+[http://www.oracle.com/technetwork/java/javase/downloads/index.html]
+以 Windows 64位系统为例：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-658c07618303479f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+下载后JDK的安装根据提示进行，还有安装JDK的时候也会安装JRE，一并安装就可以了。
+例如我们选择安装目录为&lt;strong&gt;C:\Program Files (x86)\Java\jdk1.8.0_91&lt;/strong&gt;。
+- 配置环境变量
+1.安装完成后，右击”我的电脑”，点击”属性”，选择”高级系统设置”；
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-81777a4dadff72ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+2.选择”高级”选项卡，点击”环境变量”；
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-26ecc08401e0883e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-0911755d6be83003.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+在”系统变量”中设置3项属性JAVA_HOME,PATH,CLASSPATH(大小写无所谓),若已存在则点击”编辑”，不存在则点击”新建”。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+变量设置参数如下：
+变量名：JAVA_HOME
+变量值：C:\Program Files (x86)\Java\jdk1.8.0_91
+//要根据自己的实际路径配置
+变量名：CLASSPATH
+变量值：.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;
+//记得前面有个&quot;.&quot;
+变量名：Path
+变量值：%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;
+&lt;/code&gt;
+这是 Java 的环境配置，配置完成后，你可以启动 Eclipse 来编写代码，它会自动完成java环境的配置。
+&lt;strong&gt;注意：&lt;/strong&gt;如果使用1.5以上版本的JDK，不用设置CLASSPATH环境变量，也可以正常编译和运行Java程序。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;测试JDK是否安装成功
+1、”开始”-&amp;gt;”运行”，键入”cmd”；
+2、键入命令: &lt;strong&gt;java -version&lt;/strong&gt;、&lt;strong&gt;java&lt;/strong&gt;、&lt;strong&gt;javac&lt;/strong&gt; 几个命令，出现以下信息，说明环境变量配置成功；
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-e3a4709ff907d298.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;java&quot;&gt;流行Java开发工具&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Eclipse（推荐）&lt;/strong&gt;：另一个免费开源的java IDE &lt;a href=&quot;http://www.eclipse.org/&quot;&gt;下载&lt;/a&gt;
+（选择 &lt;strong&gt;Eclipse IDE for Java Developers&lt;/strong&gt;）
+&lt;strong&gt;Notepad++ **：免费的代码编辑器 &lt;a href=&quot;http://notepad-plus-plus.org/&quot;&gt;下载&lt;/a&gt;
+**Netbeans:&lt;/strong&gt;开源免费的java IDE &lt;a href=&quot;http://www.netbeans.org/index.html&quot;&gt;下载&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;java--2&quot;&gt;Java 基础语法&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;一个Java程序可以认为是一系列对象的集合，而这些对象通过调用彼此的方法来协同工作。&lt;/strong&gt;
+&lt;strong&gt;对象&lt;/strong&gt;：对象是类的一个实例
+&lt;strong&gt;类&lt;/strong&gt;：类是一个模板，它描述一类对象的行为和状态
+&lt;strong&gt;方法&lt;/strong&gt;：方法就是行为，一个类可以有很多方法。逻辑运算、数据修改以及所有动作都是在方法中完成的
+&lt;strong&gt;实例变量&lt;/strong&gt;：每个对象都有独特的实例变量，对象的状态由这些实例变量的值决定&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;hello-world&quot;&gt;Hello World&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class HelloWorld {
+    public static void main(String []args) {
+            System.out.println(&quot;My first java program!&quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;注意&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;大小写敏感&lt;/strong&gt;：Java是大小写敏感的
+&lt;strong&gt;类名&lt;/strong&gt;：对于所有的类来说应该采用&lt;em&gt;大驼峰命名法&lt;/em&gt;。
+&lt;strong&gt;方法名&lt;/strong&gt;：所有的方法名都应该采用&lt;em&gt;小驼峰命名法&lt;/em&gt;。
+&lt;strong&gt;源文件名&lt;/strong&gt;：&lt;em&gt;源文件名必须和类名相同&lt;/em&gt;。当保存文件的时候，你应该使用类名作为文件名保存（切记Java是大小写敏感的），文件名的后缀为.java。（如果文件名和类名不相同则会导致编译错误）。
+&lt;strong&gt;主方法入口&lt;/strong&gt;：所有的Java 程序由&lt;strong&gt;public static void main(String []args)&lt;/strong&gt;方法开始执行。&lt;/p&gt;
+
+&lt;h2 id=&quot;java-1&quot;&gt;Java标识符&lt;/h2&gt;
+&lt;p&gt;类名、变量名以及方法名都被称为标识符。
+- 所有的标识符都应该以字母（A-Z或者a-z）,美元符（$）、或者下划线（_）开始
+- 首字符之后可以是任何字符的组合
+- 关键字不能用作标识符
+- 标识符是大小写敏感的&lt;/p&gt;
+
+&lt;h2 id=&quot;java-2&quot;&gt;Java修饰符&lt;/h2&gt;
+&lt;p&gt;可访问修饰符 : default, public , protected, private
+不可访问修饰符 : final, abstract, strictfp&lt;/p&gt;
+
+&lt;h2 id=&quot;java-3&quot;&gt;Java变量&lt;/h2&gt;
+&lt;p&gt;局部变量
+类变量（静态变量）
+成员变量（非静态变量）&lt;/p&gt;
+
+&lt;h2 id=&quot;java-4&quot;&gt;Java数组&lt;/h2&gt;
+&lt;p&gt;数组是储存在堆上的对象，可以保存多个同类型变量。&lt;/p&gt;
+
+&lt;h2 id=&quot;java-5&quot;&gt;Java枚举&lt;/h2&gt;
+&lt;p&gt;枚举限制变量只能是预先设定好的值。
+```
+class FreshJuice {
+   enum FreshJuiceSize{ SMALL, MEDUIM, LARGE }
+   FreshJuiceSize size;
+}&lt;/p&gt;
+
+&lt;p&gt;public class FreshJuiceTest {
+   public static void main(String []args) {
+      FreshJuice juice = new FreshJuice();
+      juice.size = FreshJuice. FreshJuiceSize.MEDUIM ;
+   }
+}
+```&lt;/p&gt;
+
+&lt;h2 id=&quot;java-6&quot;&gt;Java关键字&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-181fd1c2e005aab2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Java关键字&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;java-7&quot;&gt;Java注释&lt;/h2&gt;
+&lt;p&gt;类似于C/C++，Java也支持单行以及多行注释&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;继承&lt;/h2&gt;
+&lt;p&gt;利用继承的方法，可以重用已存在类的方法和属性，而不用重写这些代码。被继承的类称为超类（super class），派生类称为子类（subclass）。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;接口&lt;/h2&gt;
+&lt;p&gt;在Java中，接口可理解为对象间相互通信的协议。接口在继承中扮演着很重要的角色。
+接口只定义派生要用到的方法，但是方法的具体实现完全取决于派生类。&lt;/p&gt;</content><author><name>Roc J</name></author><category term="java" /><summary type="html">Java 简介</summary></entry><entry><title type="html">【Git】Git Learn</title><link href="http://localhost:4000/2017/01/17/Git-Learn/" rel="alternate" type="text/html" title="【Git】Git Learn" /><published>2017-01-17T22:53:33+08:00</published><updated>2017-01-17T22:53:33+08:00</updated><id>http://localhost:4000/2017/01/17/Git-Learn</id><content type="html" xml:base="http://localhost:4000/2017/01/17/Git-Learn/">&lt;h1 id=&quot;git&quot;&gt;Git基础&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;一：Git是什么？&lt;/strong&gt;
+      Git是目前世界上最先进的分布式版本控制系统。
+&lt;strong&gt;二：SVN与Git的最主要的区别？&lt;/strong&gt;
+      SVN是集中式版本控制系统，版本库是集中放在中央服务器的，而干活的时候，用的都是自己的电脑，所以首先要从中央服务器哪里得到最新的版本，然后干活，干完后，需要把自己做完的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，如果在局域网还可以，带宽够大，速度够快，如果在互联网下，如果网速慢的话，就纳闷了。
+      Git是分布式版本控制系统，那么它就没有中央服务器的，每个人的电脑就是一个完整的版本库，这样，工作的时候就不需要联网了，因为版本都是在自己的电脑上。既然每个人的电脑都有一个完整的版本库，那多个人如何协作呢？比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。
+&lt;strong&gt;三：在windows上如何安装Git？&lt;/strong&gt;
+      msysgit是 windows版的Git,如下：
+     &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-3cdfd449e717887e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+ 需要从网上下载一个，然后进行默认安装即可。安装完成后，在开始菜单里面找到 “Git –&amp;gt; Git Bash”,如下：
+  &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-7f0b4cc0c9b2025c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+会弹出一个类似的命令窗口的东西，就说明Git安装成功。如下：
+ &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-5d81c17ccc56b534.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+安装完成后，还需要最后一步设置，在命令行输入如下：
+ &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-510ace23b049cd16.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+  因为Git是分布式版本控制系统，所以需要填写用户名和邮箱作为一个标识。
+&lt;strong&gt;   注意：&lt;/strong&gt;git config  –global 参数，有了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然你也可以对某个仓库指定的不同的用户名和邮箱。&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;四：如何操作？&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;一：创建版本库。&lt;/h3&gt;
+&lt;p&gt;什么是版本库？版本库又名仓库，英文名repository,你可以简单的理解一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改，删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻还可以将文件”还原”。
+    所以创建一个版本库也非常简单，如下我是D盘 –&amp;gt; www下 目录下新建一个testgit版本库。
+   &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-8468fd5bf4b56663.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+pwd 命令是用于显示当前的目录。
+ 1. 通过命令 git init 把这个目录变成git可以管理的仓库，如下：
+      &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-b28c646e700ecac0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+     这时候你当前testgit目录下会多了一个.git的目录，这个目录是Git来跟踪管理版本的，没事千万不要手动乱改这个目录里面的文件，否则，会把git仓库给破坏了。如下：
+    &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-161004d6254e28ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+      2. 把文件添加到版本库中。
+          首先要明确下，所有的版本控制系统，只能跟踪文本文件的改动，比如txt文件，网页，所有程序的代码等，Git也不列外，版本控制系统可以告诉你每次的改动，但是图片，视频这些二进制文件，虽能也能由版本控制系统管理，但没法跟踪文件的变化，只能把二进制文件每次改动串起来，也就是知道图片从1kb变成2kb，但是到底改了啥，版本控制也不知道。
+** 下面先看下demo如下演示：**
+     我在版本库testgit目录下新建一个记事本文件 readme.txt 内容如下：11111111
+     第一步：使用命令 git add readme.txt添加到暂存区里面去。如下：
+    &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-3210f17df876ae97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+   如果和上面一样，没有任何提示，说明已经添加成功了。
+   第二步：用命令 git commit告诉Git，把文件提交到仓库。
+   &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-839e6380329a3a61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+  现在我们已经提交了一个readme.txt文件了，我们下面可以通过命令git status来查看是否还有文件未提交，如下：
+  &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-fbd87ecd50c6a327.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+ 说明没有任何文件未提交，但是我现在继续来改下readme.txt内容，比如我在下面添加一行2222222222内容，继续使用git status来查看下结果，如下：
+ &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-e545e4b5f548e231.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+上面的命令告诉我们 readme.txt文件已被修改，但是未被提交的修改。
+接下来我想看下readme.txt文件到底改了什么内容，如何查看呢？可以使用如下命令：
+git diff readme.txt 如下：
+ &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-58480b43b5726f67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+如上可以看到，readme.txt文件内容从一行11111111改成 二行 添加了一行22222222内容。
+知道了对readme.txt文件做了什么修改后，我们可以放心的提交到仓库了，提交修改和提交文件是一样的2步(第一步是git add  第二步是：git commit)。
+如下：
+ &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-3f20c052fac30a3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+### 二：版本回退：
+     如上，我们已经学会了修改文件，现在我继续对readme.txt文件进行修改，再增加一行
+内容为33333333333333.继续执行命令如下：
+   &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-51caac27b3cc7715.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+现在我已经对readme.txt文件做了三次修改了，那么我现在想查看下历史记录，如何查呢？我们现在可以使用命令 git log 演示如下所示：
+  &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-b73e031e27eb3f82.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+    git log命令显示从最近到最远的显示日志，我们可以看到最近三次提交，最近的一次是,增加内容为333333.上一次是添加内容222222，第一次默认是 111111.如果嫌上面显示的信息太多的话，我们可以使用命令 git log –pretty=oneline 演示如下：
+  &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-0a14819d0c78d7da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+    现在我想使用版本回退操作，我想把当前的版本回退到上一个版本，要使用什么命令呢？可以使用如下2种命令，第一种是：git reset  –hard HEAD^ 那么如果要回退到上上个版本只需把HEAD^ 改成 HEAD^^ 以此类推。那如果要回退到前100个版本的话，使用上面的方法肯定不方便，我们可以使用下面的简便命令操作：git reset  –hard HEAD~100 即可。未回退之前的readme.txt内容如下：
+  &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-fc5f46eb54d1ea1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+如果想回退到上一个版本的命令如下操作：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-78c5dafa54ffa5de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+再来查看下 readme.txt内容如下：通过命令cat readme.txt查看
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-884399fe5ff9eca3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+可以看到，内容已经回退到上一个版本了。我们可以继续使用git log 来查看下历史记录信息，如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-fb5111d834605efa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+我们看到 增加333333 内容我们没有看到了，但是现在我想回退到最新的版本，如：有333333的内容要如何恢复呢？我们可以通过版本号回退，使用命令方法如下：
+git reset  –hard 版本号 ，但是现在的问题假如我已经关掉过一次命令行或者333内容的版本号我并不知道呢？要如何知道增加3333内容的版本号呢？可以通过如下命令即可获取到版本号：git reflog  演示如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-192dcf4ea7c908a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+通过上面的显示我们可以知道，增加内容3333的版本号是 6fcfc89.我们现在可以命令
+git reset  –hard 6fcfc89来恢复了。演示如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-5bfae214b4b713ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+可以看到 目前已经是最新的版本了。
+### 三：理解工作区与暂存区的区别？
+&lt;strong&gt;工作区：&lt;/strong&gt;就是你在电脑上看到的目录，比如目录下testgit里的文件(.git隐藏目录版本库除外)。或者以后需要再新建的目录文件等等都属于工作区范畴。
+&lt;strong&gt;版本库(Repository)&lt;/strong&gt;：工作区有一个隐藏目录.git,这个不属于工作区，这是版本库。其中版本库里面存了很多东西，其中最重要的就是stage(暂存区)，还有Git为我们自动创建了第一个分支master,以及指向master的一个指针HEAD。
+我们前面说过使用Git提交文件到版本库有两步：
+  第一步：是使用 git add 把文件添加进去，实际上就是把文件添加到暂存区。
+  第二步：使用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支上。
+我们继续使用demo来演示下：
+我们在readme.txt再添加一行内容为4444444，接着在目录下新建一个文件为test.txt 内容为test，我们先用命令 git status来查看下状态，如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-2e99c735b84459cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+现在我们先使用git add 命令把2个文件都添加到暂存区中，再使用git status来查看下状态，如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-7a078d18bbc71433.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+接着我们可以使用git commit一次性提交到分支上，如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-bcfc38df376f438e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+### 四：Git撤销修改和删除文件操作。
+&lt;strong&gt;一：撤销修改：&lt;/strong&gt;
+    比如我现在在readme.txt文件里面增加一行 内容为555555555555，我们先通过命令查看如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-8836d88f90c47622.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+在我未提交之前，我发现添加5555555555555内容有误，所以我得马上恢复以前的版本，现在我可以有如下几种方法可以做修改：
+第一：如果我知道要删掉那些内容的话，直接手动更改去掉那些需要的文件，然后add添加到暂存区，最后commit掉。
+第二：我可以按以前的方法直接恢复到上一个版本。使用 git reset  –hard HEAD^
+但是现在我不想使用上面的2种方法，我想直接想使用撤销命令该如何操作呢？首先在做撤销之前，我们可以先用 git status 查看下当前的状态。如下所示：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-e8021293837fc63e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+可以发现，Git会告诉你，git checkout  – file 可以丢弃工作区的修改，如下命令：
+git checkout  –  readme.txt,如下所示：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-306051be22b59625.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+命令 git checkout –readme.txt 意思就是，把readme.txt文件在工作区做的修改全部撤销，这里有2种情况，如下：
+readme.txt自动修改后，还没有放到暂存区，使用 撤销修改就回到和版本库一模一样的状态。
+另外一种是readme.txt已经放入暂存区了，接着又作了修改，撤销修改就回到添加暂存区后的状态。&lt;/p&gt;
+
+&lt;p&gt;对于第二种情况，我想我们继续做demo来看下，假如现在我对readme.txt添加一行 内容为6666666666666，我git add 增加到暂存区后，接着添加内容7777777，我想通过撤销命令让其回到暂存区后的状态。如下所示：
+  &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-455b9ec04ce12c39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+&lt;strong&gt;注意：&lt;/strong&gt;命令git checkout – readme.txt 中的 – 很重要，如果没有 – 的话，那么命令变成创建分支了。
+&lt;strong&gt;二：删除文件。&lt;/strong&gt;
+     假如我现在版本库testgit目录添加一个文件b.txt,然后提交。如下：
+  &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-383baff522c15689.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+如上：一般情况下，可以直接在文件目录中把文件删了，或者使用如上rm命令：rm b.txt ，如果我想彻底从版本库中删掉了此文件的话，可以再执行commit命令 提交掉，现在目录是这样的，
+ &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-8228cf60914f7d80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+只要没有commit之前，如果我想在版本库中恢复此文件如何操作呢？
+可以使用如下命令 git checkout  – b.txt，如下所示：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-8e71f3893aec0a6f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+再来看看我们testgit目录，添加了3个文件了。如下所示：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-d6300b3f9772e411.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+### 五：远程仓库。
+     在了解之前，先注册github账号，由于你的本地Git仓库和github仓库之间的传输是通过SSH加密的，所以需要一点设置：
+     第一步：创建SSH Key。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果有的话，直接跳过此如下命令，如果没有的话，打开命令行，输入如下命令：
+ssh-keygen  -t rsa –C “youremail@example.com”, 由于我本地此前运行过一次，所以本地有，如下所示：
+ &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-62b4155479368957.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。
+第二步：登录github,打开” settings”中的SSH Keys页面，然后点击“Add SSH Key”,填上任意title，在Key文本框里黏贴id_rsa.pub文件的内容。
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-e813a4484fdcef5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+点击 Add Key，你就应该可以看到已经添加的key。
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-74813b7f6119587a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+如何添加远程库？&lt;/p&gt;
+
+&lt;p&gt;         现在的情景是：我们已经在本地创建了一个Git仓库后，又想在github创建一个Git仓库，并且希望这两个仓库进行远程同步，这样github的仓库可以作为备份，又可以其他人通过该仓库来协作。
+   首先，登录github上，然后在右上角找到“create a new repo”创建一个新的仓库。如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-c0f701153de690ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+在Repository name填入testgit
+，其他保持默认设置，点击“Create repository”按钮，就成功地创建了一个新的Git仓库：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-da4e775bcbff290e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+    目前，在GitHub上的这个testgit
+仓库还是空的，GitHub告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到GitHub仓库。
+现在，我们根据GitHub的提示，在本地的testgit
+仓库下运行命令：
+git remote add origin https://github.com/tugenhua0707/testgit.git
+所有的如下：
+  &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-bce9c91550ad3124.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+把本地库的内容推送到远程，使用 git push命令，实际上是把当前分支master推送到远程。
+由于远程库是空的，我们第一次推送master分支时，加上了 –u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。推送成功后，可以立刻在github页面中看到远程库的内容已经和本地一模一样了，上面的要输入github的用户名和密码如下所示：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-56e4c27d3afaa557.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+从现在起，只要本地作了提交，就可以通过如下命令：
+git push origin master
+把本地master分支的最新修改推送到github上了，现在你就拥有了真正的分布式版本库了。
+2. 如何从远程库克隆？
+  上面我们了解了先有本地库，后有远程库时候，如何关联远程库。
+  现在我们想，假如远程库有新的内容了，我想克隆到本地来 如何克隆呢？
+  首先，登录github，创建一个新的仓库，名字叫testgit2.如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-2f6b803cbd2355aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+如下，我们看到：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-e2d535f9adfefb60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+现在，远程库已经准备好了，下一步是使用命令git clone克隆一个本地库了。如下所示：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-77da353dc9a96812.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+接着在我本地目录下 生成testgit2目录了，如下所示：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-68433f94f02307cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+### 六：创建与合并分支。
+    在  版本回填退里，你已经知道，每次提交，Git都把它们串成一条时间线，这条时间线就是一个分支。截止到目前，只有一条时间线，在Git里，这个分支叫主分支，即master分支。HEAD严格来说不是指向提交，而是指向master，master才是指向提交的，所以，HEAD指向的就是当前分支。
+首先，我们来创建dev分支，然后切换到dev分支上。如下操作：
+ &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-345fbc074c759bee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+git checkout 命令加上 –b参数表示创建并切换，相当于如下2条命令
+git branch dev
+git checkout dev
+git branch查看分支，会列出所有的分支，当前分支前面会添加一个星号。然后我们在dev分支上继续做demo，比如我们现在在readme.txt再增加一行 7777777777777
+首先我们先来查看下readme.txt内容，接着添加内容77777777，如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-fe7b7e2cf22e88da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+现在dev分支工作已完成，现在我们切换到主分支master上，继续查看readme.txt内容如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-555be782c1524ab5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+现在我们可以把dev分支上的内容合并到分支master上了，可以在master分支上，使用如下命令 git merge dev 如下所示：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-1adcf01aa0022233.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+git merge命令用于合并指定分支到当前分支上，合并后，再查看readme.txt内容，可以看到，和dev分支最新提交的是完全一样的。
+注意到上面的&lt;em&gt;Fast-forward&lt;/em&gt;信息，Git告诉我们，这次合并是“快进模式”，也就是直接把master指向dev的当前提交，所以合并速度非常快。
+合并完成后，我们可以接着删除dev分支了，操作如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-1d49328b64e2eca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+总结创建与合并分支命令如下：
+	查看分支：git branch
+	创建分支：git branch name
+	切换分支：git checkout name
+	创建+切换分支：git checkout –b name
+	合并某分支到当前分支：git merge name
+	删除分支：git branch –d name
+	如何解决冲突？&lt;/p&gt;
+
+&lt;p&gt;下面我们还是一步一步来，先新建一个新分支，比如名字叫fenzhi1，在readme.txt添加一行内容8888888，然后提交，如下所示：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-78609b4d49e4fc50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+同样，我们现在切换到master分支上来，也在最后一行添加内容，内容为99999999，如下所示：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-b84bd931574c7e54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+现在我们需要在master分支上来合并fenzhi1，如下操作：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-63ef592e3363902d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+Git用«««&amp;lt;，=======，»»»&amp;gt;标记出不同分支的内容，其中«&amp;lt;HEAD是指主分支修改的内容，»»&amp;gt;fenzhi1 是指fenzhi1上修改的内容，我们可以修改下如下后保存：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-5ace0ae124f06955.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+如果我想查看分支合并的情况的话，需要使用命令 git log.命令行演示如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-0259943dd731113f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+3.分支管理策略。
+      通常合并分支时，git一般使用”Fast forward”模式，在这种模式下，删除分支后，会丢掉分支信息，现在我们来使用带参数 –no-ff来禁用”Fast forward”模式。首先我们来做demo演示下：
+创建一个dev分支。
+修改readme.txt内容。
+添加到暂存区。
+切换回主分支(master)。
+合并dev分支，使用命令 git merge –no-ff  -m “注释” dev
+查看历史记录&lt;/p&gt;
+
+&lt;p&gt;截图如下：
+ &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-078b753c894334ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+&lt;strong&gt;分支策略：&lt;/strong&gt;首先master主分支应该是非常稳定的，也就是用来发布新版本，一般情况下不允许在上面干活，干活一般情况下在新建的dev分支上干活，干完后，比如上要发布，或者说dev分支代码稳定后可以合并到主分支master上来。
+### 七：bug分支：
+在开发中，会经常碰到bug问题，那么有了bug就需要修复，在Git中，分支是很强大的，每个bug都可以通过一个临时分支来修复，修复完成后，合并分支，然后将临时的分支删除掉。
+比如我在开发中接到一个404 bug时候，我们可以创建一个404分支来修复它，但是，当前的dev分支上的工作还没有提交。比如如下：
+ &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-1f7d7437473bdeff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+   并不是我不想提交，而是工作进行到一半时候，我们还无法提交，比如我这个分支bug要2天完成，但是我issue-404 bug需要5个小时内完成。怎么办呢？还好，Git还提供了一个stash功能，可以把当前工作现场 ”隐藏起来”，等以后恢复现场后继续工作。如下：
+  &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-6b7e643847caa88e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+   所以现在我可以通过创建issue-404分支来修复bug了。
+首先我们要确定在那个分支上修复bug，比如我现在是在主分支master上来修复的，现在我要在master分支上创建一个临时分支，演示如下：
+ &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-73f50abfd085b8a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+修复完成后，切换到master分支上，并完成合并，最后删除issue-404分支。演示如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-580e24c7fe370cdf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+现在，我们回到dev分支上干活了。
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-25a7e28b55b57304.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+工作区是干净的，那么我们工作现场去哪里呢？我们可以使用命令 git stash list来查看下。如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-718a3b76abff0dc3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+工作现场还在，Git把stash内容存在某个地方了，但是需要恢复一下，可以使用如下2个方法：
+git stash apply恢复，恢复后，stash内容并不删除，你需要使用命令git stash drop来删除。
+另一种方式是使用git stash pop,恢复的同时把stash内容也删除了。&lt;/p&gt;
+
+&lt;p&gt;         演示如下
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-42d68b6d38b8cc0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+八：多人协作。
+当你从远程库克隆时候，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且远程库的默认名称是origin。
+要查看远程库的信息 使用 git remote
+要查看远程库的详细信息 使用 git remote –v&lt;/p&gt;
+
+&lt;p&gt;如下演示：
+ &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-b00b24f06720b8e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+&lt;strong&gt;一：推送分支：&lt;/strong&gt;
+      推送分支就是把该分支上所有本地提交到远程库中，推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：
+      使用命令 git push origin master
+比如我现在的github上的readme.txt代码如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-f29ef19582cee24a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+本地的readme.txt代码如下：
+ &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-0bd79494c3d487ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+现在我想把本地更新的readme.txt代码推送到远程库中，使用命令如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-fe7f3ba2c34bd036.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+我们可以看到如上，推送成功，我们可以继续来截图github上的readme.txt内容 如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-b80d5e135ce33f0b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+可以看到 推送成功了，如果我们现在要推送到其他分支，比如dev分支上，我们还是那个命令 git push origin dev
+那么一般情况下，那些分支要推送呢？
+master分支是主分支，因此要时刻与远程同步。
+一些修复bug分支不需要推送到远程去，可以先合并到主分支上，然后把主分支master推送到远程去。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;二：抓取分支：&lt;/strong&gt;
+多人协作时，大家都会往master分支上推送各自的修改。现在我们可以模拟另外一个同事，可以在另一台电脑上（注意要把SSH key添加到github上）或者同一台电脑上另外一个目录克隆，新建一个目录名字叫testgit2
+但是我首先要把dev分支也要推送到远程去，如下
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-f26b4c33d0e700d8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+接着进入testgit2目录，进行克隆远程的库到本地来，如下：
+ &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-69950378e1391a0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+现在目录下生成有如下所示：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-cd4ee1401ced20fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+现在我们的小伙伴要在dev分支上做开发，就必须把远程的origin的dev分支到本地来，于是可以使用命令创建本地dev分支：git checkout  –b dev origin/dev
+现在小伙伴们就可以在dev分支上做开发了，开发完成后把dev分支推送到远程库时。
+如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-0c8442db86203577.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+小伙伴们已经向origin/dev分支上推送了提交，而我在我的目录文件下也对同样的文件同个地方作了修改，也试图推送到远程库时，如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-dcd31601535fea7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+由上面可知：推送失败，因为我的小伙伴最新提交的和我试图推送的有冲突，解决的办法也很简单，上面已经提示我们，先用git pull把最新的提交从origin/dev抓下来，然后在本地合并，解决冲突，再推送。
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-78d66218f5013392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;git pull&lt;/em&gt;也失败了，原因是没有指定本地dev分支与远程origin/dev分支的链接，根据提示，设置dev和origin/dev的链接：如下：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-fd596d1e739b33b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+这回&lt;em&gt;git pull&lt;/em&gt;成功，但是合并有冲突，需要手动解决，解决的方法和分支管理中的 解决冲突完全一样。解决后，提交，再push：
+我们可以先来看看readme.txt内容了。
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-14057b27fe332e11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
+现在手动已经解决完了，我接在需要再提交，再push到远程库里面去。如下所示：&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-4c2390f5844ff0b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;因此：多人协作工作模式一般是这样的：&lt;/h2&gt;
+&lt;p&gt;首先，可以试图用git push origin branch-name推送自己的修改.
+如果推送失败，则因为远程分支比你的本地更新早，需要先用git pull试图合并。
+如果合并有冲突，则需要解决冲突，并在本地提交。再用git push origin branch-name推送。&lt;/p&gt;
+
+&lt;p&gt; &lt;a href=&quot;http://www.cnblogs.com/tugenhua0707/p/4050072.html&quot;&gt;出处&lt;/a&gt;&lt;/p&gt;</content><author><name>Roc J</name></author><category term="git" /><category term="教程" /><summary type="html">Git基础</summary></entry><entry><title type="html">【Html】HTML学习 – Day 1</title><link href="http://localhost:4000/2017/01/15/HTML%E5%AD%A6%E4%B9%A0-Day-1/" rel="alternate" type="text/html" title="【Html】HTML学习 -- Day 1" /><published>2017-01-15T03:53:33+08:00</published><updated>2017-01-15T03:53:33+08:00</updated><id>http://localhost:4000/2017/01/15/HTML%E5%AD%A6%E4%B9%A0-Day-1</id><content type="html" xml:base="http://localhost:4000/2017/01/15/HTML%E5%AD%A6%E4%B9%A0-Day-1/">&lt;h2 id=&quot;html&quot;&gt;HTML&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;HTML 是用来描述网页的一种语言。&lt;/li&gt;
+  &lt;li&gt;HTML 指的是超文本标记语言: &lt;strong&gt;H&lt;/strong&gt;yper&lt;strong&gt;T&lt;/strong&gt;ext &lt;strong&gt;M&lt;/strong&gt;arkup &lt;strong&gt;L&lt;/strong&gt;anguage&lt;/li&gt;
+  &lt;li&gt;HTML 不是一种编程语言，而是一种&lt;strong&gt;标记&lt;/strong&gt;语言，标记语言是一套&lt;strong&gt;标记标签&lt;/strong&gt; (markup tag)&lt;/li&gt;
+  &lt;li&gt;HTML 使用标记标签来&lt;strong&gt;描述&lt;/strong&gt;网页&lt;/li&gt;
+  &lt;li&gt;HTML 文档包含了HTML&lt;strong&gt; 标签&lt;/strong&gt;及&lt;strong&gt;文本&lt;/strong&gt;内容&lt;/li&gt;
+  &lt;li&gt;HTML文档也叫做&lt;strong&gt; web 页面&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;html-1&quot;&gt;HTML页面结构&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;只有 &amp;lt;body&amp;gt; 区域 (白色部分) 才会在浏览器中显示&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1530254-a19119fb0c5fa744.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;可视化的HTML页面结构&quot; /&gt;
+- DOCTYPE 声明了文档类型
+- &amp;lt;html&amp;gt; 与 &amp;lt;/html&amp;gt; 描述了文档类型
+- &amp;lt;body&amp;gt; 与 &amp;lt;/body&amp;gt; 为可视化网页内容&lt;/p&gt;
+
+&lt;h2 id=&quot;doctype-&quot;&gt;&amp;lt;!DOCTYPE&amp;gt; 声明&lt;/h2&gt;
+&lt;p&gt;&amp;lt;!DOCTYPE&amp;gt;声明有助于浏览器中正确显示网页。
+doctype 声明是不区分大小写的，以下方式均可：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+//HTML5通用声明
+&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;!DOCTYPE HTML&amp;gt;
+&amp;lt;!doctype html&amp;gt;
+&amp;lt;!Doctype Html&amp;gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;中文编码&lt;/h2&gt;
+&lt;p&gt;直接输出中文会出现中文乱码的情况，这时需要在头部将字符声明为 UTF-8
+```&lt;/p&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot; /&gt;
+&lt;/head&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+## HTML 编辑器推荐
+- Notepad++：[https://notepad-plus-plus.org/](http://notepad-plus-plus.org/)
+- Sublime Text：[http://www.sublimetext.com/](http://www.sublimetext.com/)
+- HBuilder：[http://www.dcloud.io/](http://www.dcloud.io/)
+
+## HTML 标题
+标题是通过` &amp;lt;h1&amp;gt; - &amp;lt;h6&amp;gt; `标签进行定义的，` &amp;lt;h1&amp;gt; `最大，` &amp;lt;h6&amp;gt; `最小。
+**注释:** 浏览器会自动地在标题的前后添加空行。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h1&gt;这是一个标题&lt;/h1&gt;
+&lt;h2&gt;这是一个标题&lt;/h2&gt;
+&lt;h6&gt;这是一个标题&lt;/h6&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+## HTML 水平线
+&amp;lt;hr&amp;gt; 标签在 HTML 页面中创建水平线，可用于分隔内容
+
+## HTML 注释
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;!--这是一个注释--&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+## HTML 段落
+**注意：**浏览器会自动地在段落的前后添加空行。（`&amp;lt;/p&amp;gt; `是块级元素）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;这是一个段落。&lt;/p&gt;
+&lt;p&gt;这是另外一个段落。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;注意：即使忘了使用结束标签，大多数浏览器也会正确地将 HTML 显示出来：
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;这是一个段落
+&lt;p&gt;这是另一个段落
+```
+
+## HTML 折行
+如果不希望在一个新段落进行换行，可以使用` &lt;br /&gt; `标签：
+```
+&lt;p&gt;第一行&lt;br /&gt;该段第二行&lt;br /&gt;该段第三行&lt;/p&gt;
+```
+下面的写法并不会产生换行
+```
+&lt;p&gt;内容
+内容
+内容&lt;/p&gt;
+```
+
+## HTML 输出
+当显示页面时，浏览器会移除源代码中多余的**空格**和**空行**。所有连续的空格或空行都会被算作一个空格。需要注意的是，HTML代码中的所有连续的空行（换行）也被显示为一个空格。
+
+## HTML 文本格式化标签
+```
+标签    描述
+&lt;b&gt;  定义粗体文本
+&lt;em&gt;  定义着重文字
+&lt;i&gt;  定义斜体字
+&lt;small&gt;  定义小号字
+&lt;strong&gt;  定义加重语气
+&lt;sub&gt;  定义下标字
+&lt;sup&gt;  定义上标字
+&lt;ins&gt;  定义插入字
+&lt;del&gt;  定义删除字
+```
+
+## HTML &quot;计算机输出&quot; 标签
+```
+标签	描述
+&lt;code&gt;	定义计算机代码
+&lt;kbd&gt;	定义键盘码
+&lt;samp&gt;	定义计算机代码样本
+&lt;var&gt;	定义变量
+&lt;pre&gt;	定义预格式文本
+```
+
+##  HTML 引文, 引用, 及标签定义
+```
+标签	描述
+&lt;abbr&gt;	定义缩写
+&lt;address&gt;	定义地址
+&lt;bdo&gt;	定义文字方向
+&lt;blockquote&gt;	定义长的引用
+&lt;q&gt;	定义短的引用语
+&lt;cite&gt;	定义引用、引证
+&lt;dfn&gt;	定义一个定义项目。
+```
+
+##  HTML 空元素
+空元素是在开始标签中关闭的。
+`&lt;br /&gt;` 就是没有关闭标签的空元素（`&lt;br /&gt;`标签定义换行）。
+`&lt;br /&gt;`是关闭空元素的正确方法，HTML、XHTML 和 XML 都接受这种方式。
+```
+&lt;br /&gt;
+&lt;br /&gt;
+```
+
+##  HTML 链接
+href 属性中指定链接的地址
+```
+&lt;a href=&quot;http://www.runoob.com&quot;&gt;这是一个链接&lt;/a&gt;
+```
+
+##  HTML 图像
+```
+&lt;img src=&quot;1.png&quot; width=&quot;104&quot; height=&quot;142&quot; /&gt;
+```
+
+##  HTML 标签对大小写不敏感
+
+##  HTML 属性
+HTML 元素可以设置**属性**
+属性可以在元素中添加**附加信息**
+属性一般描述于**开始标签**
+属性总是以名称/值对的形式出现，**比如：name=&quot;value&quot;**。
+
+##  HTML 属性常用引用属性值
+属性值应该始终被包括在引号内。
+双引号是最常用的，不过使用单引号也没有问题。
+**提示:** 如属性值本身就含有双引号，那么就必须使用单引号，例如：name='John &quot;ShotGun&quot; Nelson'
+&lt;/dfn&gt;&lt;/cite&gt;&lt;/q&gt;&lt;/blockquote&gt;&lt;/bdo&gt;&lt;/address&gt;&lt;/abbr&gt;&lt;/pre&gt;&lt;/var&gt;&lt;/samp&gt;&lt;/kbd&gt;&lt;/code&gt;&lt;/del&gt;&lt;/ins&gt;&lt;/sup&gt;&lt;/sub&gt;&lt;/strong&gt;&lt;/small&gt;&lt;/i&gt;&lt;/em&gt;&lt;/b&gt;&lt;/p&gt;&lt;/p&gt;</content><author><name>Roc J</name></author><category term="html" /><summary type="html">HTML
+
+  HTML 是用来描述网页的一种语言。
+  HTML 指的是超文本标记语言: HyperText Markup Language
+  HTML 不是一种编程语言，而是一种标记语言，标记语言是一套标记标签 (markup tag)
+  HTML 使用标记标签来描述网页
+  HTML 文档包含了HTML 标签及文本内容
+  HTML文档也叫做 web 页面</summary></entry></feed>

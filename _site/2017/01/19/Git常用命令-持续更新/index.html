@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>【Git】Git常用命令（持续更新） &mdash; Little Forest</title>
+    <link rel="stylesheet" href="/assets/vendor/primer-css/css/primer.css">
+    <link rel="stylesheet" href="/assets/vendor/primer-markdown/dist/user-content.min.css">
+    <link rel="stylesheet" href="/assets/vendor/octicons/octicons/octicons.css">
+    <link rel="stylesheet" href="/assets/css/components/collection.css">
+    <link rel="stylesheet" href="/assets/css/components/repo-card.css">
+    <link rel="stylesheet" href="/assets/css/sections/repo-list.css">
+    <link rel="stylesheet" href="/assets/css/sections/mini-repo-list.css">
+    <link rel="stylesheet" href="/assets/css/components/boxed-group.css">
+    <link rel="stylesheet" href="/assets/css/globals/common.css">
+    <link rel="stylesheet" href="/assets/vendor/share.js/dist/css/share.min.css">
+    <link rel="stylesheet" href="/assets/css/globals/responsive.css">
+    <link rel="stylesheet" href="/assets/css/posts/index.css">
+    <!-- Latest compiled and minified CSS -->
+    
+
+    
+    <link rel="canonical" href="http://localhost:4000/2017/01/19/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/">
+    <link rel="alternate" type="application/atom+xml" title="Little Forest" href="/feed.xml">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <meta property="og:title" content="【Git】Git常用命令（持续更新）">
+      
+    <meta name="keywords" content="Little Forest, Roc J, DING PENG, Blog">
+    <meta name="og:keywords" content="Little Forest, Roc J, DING PENG, Blog">
+      
+    <meta name="description" content="配置```bashgit –version">
+    <meta name="og:description" content="配置```bashgit –version">
+      
+    
+    
+        
+    
+    <meta property="og:url" content="http://localhost:4000/2017/01/19/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/">
+    <meta property="og:site_name" content="Little Forest">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="zh_CN" />
+    
+    <meta property="article:published_time" content="2017-01-19">
+    
+    <script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/js/jquery-ui.js"></script>
+    <script type="text/javascript">
+    function toggleMenu() {
+        var nav = document.getElementsByClassName("site-header-nav")[0];
+        if (nav.style.display == "inline-flex") {
+          nav.style.display = "none";
+        } else {
+          nav.style.display = "inline-flex";
+        }
+    }
+    </script>
+</head>
+<body class="" data-mz="">
+    <header class="site-header">
+        <div class="container">
+            <h1><a href="/" title="Little Forest"><span class="octicon octicon-mark-github"></span> Little Forest</a></h1>
+            <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <nav class="site-header-nav" role="navigation">
+                
+                <a href="/" class=" site-header-nav-item" target="" title="首页">首页</a>
+                
+                <a href="/categories/" class=" site-header-nav-item" target="" title="分类">分类</a>
+                
+                <a href="/wiki/" class=" site-header-nav-item" target="" title="维基">维基</a>
+                
+                <a href="/links/" class=" site-header-nav-item" target="" title="链接">链接</a>
+                
+                <a href="/about/" class=" site-header-nav-item" target="" title="关于">关于</a>
+                
+            </nav>
+        </div>
+    </header>
+    <!-- / header -->
+
+    <section class="collection-head small geopattern" data-pattern-id="【Git】Git常用命令（持续">
+<div class="container">
+  <div class="columns">
+    <div class="column three-fourths">
+      <div class="collection-title">
+        <h1 class="collection-header">【Git】Git常用命令（持续更新）</h1>
+        <div class="collection-info">
+          
+          <span class="meta-info">
+            <span class="octicon octicon-calendar"></span> 2017/01/19
+          </span>
+          
+          
+          <span class="meta-info">
+            <span class="octicon octicon-file-directory"></span>
+            <a href="/categories/#新技能" title="新技能">新技能</a>
+          </span>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- / .banner -->
+<section class="container content">
+<div class="columns">
+  <div class="column three-fourths" >
+    <article class="article-content markdown-body">
+    <h1 id="section">配置</h1>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>git --version
+
+//配置ssh-key
+ssh-keygen
+
+//查看Git全局配置信息
+git config -l
+
+//配置全局用户名和邮箱
+git config --global user.name <span class="s2">"user_name"</span>
+git config --global user.email <span class="s2">"user_email"</span>
+</code></pre>
+</div>
+
+<h1 id="repository">仓库（版本库）repository</h1>
+<div class="highlighter-rouge"><pre class="highlight"><code>mkdir folder_name
+cd folder_name
+//显示当前folder路径
+pwd
+
+//将folder初始化为空的本地repo
+git init
+
+//显示当前folder内容
+ls
+//显示当前folder内容（包括隐藏的文件）
+ls -ah
+
+//添加readme.md
+vi readme.md
+//insert
+i
+//exit and save
+:wq
+
+//提交文件修改到本地库
+git add file_name
+//提交全部
+git add .
+//提交，-m "modify_content"指提交说明
+git commit -m "modify_content"
+
+git commit -a "modify_content"
+</code></pre>
+</div>
+
+<h1 id="section-1">分支</h1>
+<div class="highlighter-rouge"><pre class="highlight"><code>//查看本地分支
+git branch
+//查看远端分支
+git branch -a
+
+//创建并切换到dev(development)分支
+git checkout -b dev
+
+//创建dev分支
+git branch dev
+
+//删除分支
+git branch -d name
+
+//切换分支
+git checkout name
+
+
+//查看工作区中文件的状态
+git status
+
+
+//查看版本的提交记录，以选择回退到之前哪个版本
+git log
+
+//从版本库和硬盘上同时删除文件
+git rm filename
+
+
+//复制远程的Git代码库到本地文件夹
+git clone remote_url [local_dir]
+
+
+git pull
+
+
+git push
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>   mkdir：         XX (创建一个空目录 XX指目录名)
+
+   pwd：          显示当前目录的路径。
+
+   git init          把当前的目录变成可以管理的git仓库，生成隐藏.git文件。
+
+   git add XX       把xx文件添加到暂存区去。
+
+   git commit –m “XX”  提交文件 –m 后面的是注释。
+
+   git status        查看仓库状态
+
+   git diff  XX      查看XX文件修改了那些内容
+
+   git log          查看历史记录
+
+   git reset  --hard HEAD^ 或者 git reset  --hard HEAD~ 回退到上一个版本
+
+                        (如果想回退到100个版本，使用git reset –hard HEAD~100 )
+
+   cat XX         查看XX文件内容
+
+   git reflog       查看历史记录的版本号id
+
+   git checkout -- XX  把XX文件在工作区的修改全部撤销。
+
+   git rm XX          删除XX文件
+
+   git remote add origin https://github.com/tugenhua0707/testgit 关联一个远程库
+
+   git push –u(第一次要用-u 以后不需要) origin master 把当前master分支推送到远程库
+
+   git clone https://github.com/tugenhua0707/testgit  从远程库中克隆
+
+   git checkout –b dev  创建dev分支 并切换到dev分支上
+
+   git branch  查看当前所有的分支
+
+   git checkout master 切换回master分支
+
+   git merge dev    在当前的分支上合并dev分支
+
+   git branch –d dev 删除dev分支
+
+   git branch name  创建分支
+
+   git stash 把当前的工作隐藏起来 等以后恢复现场后继续工作
+
+   git stash list 查看所有被隐藏的文件列表
+
+   git stash apply 恢复被隐藏的文件，但是内容不删除
+
+   git stash drop 删除文件
+
+   git stash pop 恢复文件的同时 也删除文件
+
+   git remote 查看远程库的信息
+
+   git remote –v 查看远程库的详细信息
+
+   git push origin master  Git会把master分支推送到远程库对应的远程分支上
+</code></pre>
+</div>
+
+    </article>
+    <div class="share">
+      <div class="share-component"></div>
+    </div>
+    <div class="comment">
+      
+  
+      
+      <!-- Duoshuo Comment BEGIN -->
+      <!-- 多说评论框 BEGIN -->
+      <div class="ds-thread" data-thread-key="/2017/01/19/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/" data-title="【Git】Git常用命令（持续更新）" data-url="http://localhost:4000/2017/01/19/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/"></div>
+      <!-- 多说评论框 END -->
+      <!-- 多说公共JS代码 BEGIN (一个网页只需插入一次) -->
+      <script type="text/javascript">
+      var duoshuoQuery = {short_name:"rocj-cn"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+           || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+        </script>
+      <!-- 多说公共JS代码 END -->
+      <!-- Duoshuo Comment END -->
+      
+  
+
+
+    </div>
+  </div>
+  <div class="column one-fourth">
+    
+<h3>Search</h3>
+<div id="site_search">
+    <input type="text" id="search_box" placeholder="Search">
+    <button class="btn btn-default" id="site_search_do"><span class="octicon octicon-search"></span></button>
+</div>
+
+<ul id="search_results"></ul>
+
+<link rel="stylesheet" type="text/css" href="/assets/css/modules/sidebar-search.css">
+<script src="/assets/js/lunr.min.js"></script>
+<script src="/assets/js/search.js"></script>
+
+
+    
+<h3>Post Directory</h3>
+<div id="post-directory-module" class="mobile-hidden">
+  <section class="post-directory">
+  <!-- Links that trigger the jumping -->
+  <!-- Added by javascript below -->
+  <dl></dl>
+  </section>
+</div>
+
+<script src="/assets/js/jquery.toc.js"></script>
+
+  </div>
+</div>
+</section>
+<!-- /section.content -->
+
+    <footer class="container">
+        <div class="site-footer" role="contentinfo">
+            <div class="copyright left mobile-block">
+                    © 2015
+                    <span title="Roc J">Roc J</span>
+                    <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
+            </div>
+
+            <ul class="site-footer-links right mobile-hidden">
+                <li>
+                    <a href="javascript:window.scrollTo(0,0)" >TOP</a>
+                </li>
+            </ul>
+            <a href="http://github.com/rocj/jekyll-mzlogin" target="_blank" aria-label="view source code">
+                <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+            </a>
+            <ul class="site-footer-links mobile-hidden">
+                
+                <li>
+                    <a href="/" title="首页" target="">首页</a>
+                </li>
+                
+                <li>
+                    <a href="/categories/" title="分类" target="">分类</a>
+                </li>
+                
+                <li>
+                    <a href="/wiki/" title="维基" target="">维基</a>
+                </li>
+                
+                <li>
+                    <a href="/links/" title="链接" target="">链接</a>
+                </li>
+                
+                <li>
+                    <a href="/about/" title="关于" target="">关于</a>
+                </li>
+                
+                <li><a href="/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a></li>
+            </ul>
+
+        </div>
+    </footer>
+    <!-- / footer -->
+    <script src="/assets/vendor/share.js/dist/js/share.min.js"></script>
+    <script src="/assets/js/geopattern.js"></script>
+    <script src="/assets/js/prism.js"></script>
+    <link rel="stylesheet" href="/assets/css/globals/prism.css">
+    <script>
+      jQuery(document).ready(function($) {
+        // geopattern
+        $('.geopattern').each(function(){
+          $(this).geopattern($(this).data('pattern-id'));
+        });
+       // hljs.initHighlightingOnLoad();
+      });
+    </script>
+    
+    <div style="display:none">
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80669434-1', 'auto');
+        ga('send', 'pageview');
+
+      </script>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>【Java】JAVA-简介-开发环境-基础语法 &mdash; Little Forest</title>
+    <link rel="stylesheet" href="/assets/vendor/primer-css/css/primer.css">
+    <link rel="stylesheet" href="/assets/vendor/primer-markdown/dist/user-content.min.css">
+    <link rel="stylesheet" href="/assets/vendor/octicons/octicons/octicons.css">
+    <link rel="stylesheet" href="/assets/css/components/collection.css">
+    <link rel="stylesheet" href="/assets/css/components/repo-card.css">
+    <link rel="stylesheet" href="/assets/css/sections/repo-list.css">
+    <link rel="stylesheet" href="/assets/css/sections/mini-repo-list.css">
+    <link rel="stylesheet" href="/assets/css/components/boxed-group.css">
+    <link rel="stylesheet" href="/assets/css/globals/common.css">
+    <link rel="stylesheet" href="/assets/vendor/share.js/dist/css/share.min.css">
+    <link rel="stylesheet" href="/assets/css/globals/responsive.css">
+    <link rel="stylesheet" href="/assets/css/posts/index.css">
+    <!-- Latest compiled and minified CSS -->
+    
+
+    
+    <link rel="canonical" href="http://localhost:4000/2017/01/17/JAVA-%E7%AE%80%E4%BB%8B-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
+    <link rel="alternate" type="application/atom+xml" title="Little Forest" href="/feed.xml">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <meta property="og:title" content="【Java】JAVA-简介-开发环境-基础语法">
+      
+    <meta name="keywords" content="Little Forest, Roc J, DING PENG, Blog">
+    <meta name="og:keywords" content="Little Forest, Roc J, DING PENG, Blog">
+      
+    <meta name="description" content="Java 简介">
+    <meta name="og:description" content="Java 简介">
+      
+    
+    
+        
+    
+    <meta property="og:url" content="http://localhost:4000/2017/01/17/JAVA-%E7%AE%80%E4%BB%8B-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
+    <meta property="og:site_name" content="Little Forest">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="zh_CN" />
+    
+    <meta property="article:published_time" content="2017-01-17">
+    
+    <script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/js/jquery-ui.js"></script>
+    <script type="text/javascript">
+    function toggleMenu() {
+        var nav = document.getElementsByClassName("site-header-nav")[0];
+        if (nav.style.display == "inline-flex") {
+          nav.style.display = "none";
+        } else {
+          nav.style.display = "inline-flex";
+        }
+    }
+    </script>
+</head>
+<body class="" data-mz="">
+    <header class="site-header">
+        <div class="container">
+            <h1><a href="/" title="Little Forest"><span class="octicon octicon-mark-github"></span> Little Forest</a></h1>
+            <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <nav class="site-header-nav" role="navigation">
+                
+                <a href="/" class=" site-header-nav-item" target="" title="首页">首页</a>
+                
+                <a href="/categories/" class=" site-header-nav-item" target="" title="分类">分类</a>
+                
+                <a href="/wiki/" class=" site-header-nav-item" target="" title="维基">维基</a>
+                
+                <a href="/links/" class=" site-header-nav-item" target="" title="链接">链接</a>
+                
+                <a href="/about/" class=" site-header-nav-item" target="" title="关于">关于</a>
+                
+            </nav>
+        </div>
+    </header>
+    <!-- / header -->
+
+    <section class="collection-head small geopattern" data-pattern-id="【Java】JAVA-简介-开">
+<div class="container">
+  <div class="columns">
+    <div class="column three-fourths">
+      <div class="collection-title">
+        <h1 class="collection-header">【Java】JAVA-简介-开发环境-基础语法</h1>
+        <div class="collection-info">
+          
+          <span class="meta-info">
+            <span class="octicon octicon-calendar"></span> 2017/01/17
+          </span>
+          
+          
+          <span class="meta-info">
+            <span class="octicon octicon-file-directory"></span>
+            <a href="/categories/#Java" title="Java">Java</a>
+          </span>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- / .banner -->
+<section class="container content">
+<div class="columns">
+  <div class="column three-fourths" >
+    <article class="article-content markdown-body">
+    <h1 id="java-">Java 简介</h1>
+
+<p>Java是由Sun Microsystems公司于1995年推出的Java面向对象程序设计语言和Java平台的总称。
+Java分为三个体系：
+<strong>JavaSE</strong>（J2SE）（Java 2 Platform Standard Edition，java平台标准版）
+<strong>JavaEE</strong>（J2EE）（Java 2 Platform,Enterprise Edition，java平台企业版）
+<strong>JavaME</strong>（J2ME）（Java 2 Platform Micro Edition，java平台微型版）</p>
+
+<h1 id="java--1">Java 开发环境</h1>
+<p>## Windows系统安装Java
+- 下载JDK（Java开发工具包）
+[http://www.oracle.com/technetwork/java/javase/downloads/index.html]
+以 Windows 64位系统为例：
+<img src="http://upload-images.jianshu.io/upload_images/1530254-658c07618303479f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" />
+下载后JDK的安装根据提示进行，还有安装JDK的时候也会安装JRE，一并安装就可以了。
+例如我们选择安装目录为<strong>C:\Program Files (x86)\Java\jdk1.8.0_91</strong>。
+- 配置环境变量
+1.安装完成后，右击”我的电脑”，点击”属性”，选择”高级系统设置”；
+<img src="http://upload-images.jianshu.io/upload_images/1530254-81777a4dadff72ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" />
+2.选择”高级”选项卡，点击”环境变量”；
+<img src="http://upload-images.jianshu.io/upload_images/1530254-26ecc08401e0883e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" />
+<img src="http://upload-images.jianshu.io/upload_images/1530254-0911755d6be83003.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" />
+在”系统变量”中设置3项属性JAVA_HOME,PATH,CLASSPATH(大小写无所谓),若已存在则点击”编辑”，不存在则点击”新建”。
+<code class="highlighter-rouge">
+变量设置参数如下：
+变量名：JAVA_HOME
+变量值：C:\Program Files (x86)\Java\jdk1.8.0_91
+//要根据自己的实际路径配置
+变量名：CLASSPATH
+变量值：.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;
+//记得前面有个"."
+变量名：Path
+变量值：%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;
+</code>
+这是 Java 的环境配置，配置完成后，你可以启动 Eclipse 来编写代码，它会自动完成java环境的配置。
+<strong>注意：</strong>如果使用1.5以上版本的JDK，不用设置CLASSPATH环境变量，也可以正常编译和运行Java程序。</p>
+
+<ul>
+  <li>测试JDK是否安装成功
+1、”开始”-&gt;”运行”，键入”cmd”；
+2、键入命令: <strong>java -version</strong>、<strong>java</strong>、<strong>javac</strong> 几个命令，出现以下信息，说明环境变量配置成功；
+<img src="http://upload-images.jianshu.io/upload_images/1530254-e3a4709ff907d298.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></li>
+</ul>
+
+<h2 id="java">流行Java开发工具</h2>
+<p><strong>Eclipse（推荐）</strong>：另一个免费开源的java IDE <a href="http://www.eclipse.org/">下载</a>
+（选择 <strong>Eclipse IDE for Java Developers</strong>）
+<strong>Notepad++ **：免费的代码编辑器 <a href="http://notepad-plus-plus.org/">下载</a>
+**Netbeans:</strong>开源免费的java IDE <a href="http://www.netbeans.org/index.html">下载</a></p>
+
+<h1 id="java--2">Java 基础语法</h1>
+
+<blockquote>
+  <p><strong>一个Java程序可以认为是一系列对象的集合，而这些对象通过调用彼此的方法来协同工作。</strong>
+<strong>对象</strong>：对象是类的一个实例
+<strong>类</strong>：类是一个模板，它描述一类对象的行为和状态
+<strong>方法</strong>：方法就是行为，一个类可以有很多方法。逻辑运算、数据修改以及所有动作都是在方法中完成的
+<strong>实例变量</strong>：每个对象都有独特的实例变量，对象的状态由这些实例变量的值决定</p>
+</blockquote>
+
+<h2 id="hello-world">Hello World</h2>
+<div class="highlighter-rouge"><pre class="highlight"><code>public class HelloWorld {
+    public static void main(String []args) {
+            System.out.println("My first java program!");
+    }
+}
+</code></pre>
+</div>
+
+<h2 id="section">注意</h2>
+<p><strong>大小写敏感</strong>：Java是大小写敏感的
+<strong>类名</strong>：对于所有的类来说应该采用<em>大驼峰命名法</em>。
+<strong>方法名</strong>：所有的方法名都应该采用<em>小驼峰命名法</em>。
+<strong>源文件名</strong>：<em>源文件名必须和类名相同</em>。当保存文件的时候，你应该使用类名作为文件名保存（切记Java是大小写敏感的），文件名的后缀为.java。（如果文件名和类名不相同则会导致编译错误）。
+<strong>主方法入口</strong>：所有的Java 程序由<strong>public static void main(String []args)</strong>方法开始执行。</p>
+
+<h2 id="java-1">Java标识符</h2>
+<p>类名、变量名以及方法名都被称为标识符。
+- 所有的标识符都应该以字母（A-Z或者a-z）,美元符（$）、或者下划线（_）开始
+- 首字符之后可以是任何字符的组合
+- 关键字不能用作标识符
+- 标识符是大小写敏感的</p>
+
+<h2 id="java-2">Java修饰符</h2>
+<p>可访问修饰符 : default, public , protected, private
+不可访问修饰符 : final, abstract, strictfp</p>
+
+<h2 id="java-3">Java变量</h2>
+<p>局部变量
+类变量（静态变量）
+成员变量（非静态变量）</p>
+
+<h2 id="java-4">Java数组</h2>
+<p>数组是储存在堆上的对象，可以保存多个同类型变量。</p>
+
+<h2 id="java-5">Java枚举</h2>
+<p>枚举限制变量只能是预先设定好的值。
+```
+class FreshJuice {
+   enum FreshJuiceSize{ SMALL, MEDUIM, LARGE }
+   FreshJuiceSize size;
+}</p>
+
+<p>public class FreshJuiceTest {
+   public static void main(String []args) {
+      FreshJuice juice = new FreshJuice();
+      juice.size = FreshJuice. FreshJuiceSize.MEDUIM ;
+   }
+}
+```</p>
+
+<h2 id="java-6">Java关键字</h2>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1530254-181fd1c2e005aab2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Java关键字" /></p>
+
+<h2 id="java-7">Java注释</h2>
+<p>类似于C/C++，Java也支持单行以及多行注释</p>
+
+<h2 id="section-1">继承</h2>
+<p>利用继承的方法，可以重用已存在类的方法和属性，而不用重写这些代码。被继承的类称为超类（super class），派生类称为子类（subclass）。</p>
+
+<h2 id="section-2">接口</h2>
+<p>在Java中，接口可理解为对象间相互通信的协议。接口在继承中扮演着很重要的角色。
+接口只定义派生要用到的方法，但是方法的具体实现完全取决于派生类。</p>
+
+    </article>
+    <div class="share">
+      <div class="share-component"></div>
+    </div>
+    <div class="comment">
+      
+  
+      
+      <!-- Duoshuo Comment BEGIN -->
+      <!-- 多说评论框 BEGIN -->
+      <div class="ds-thread" data-thread-key="/2017/01/17/JAVA-%E7%AE%80%E4%BB%8B-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" data-title="【Java】JAVA-简介-开发环境-基础语法" data-url="http://localhost:4000/2017/01/17/JAVA-%E7%AE%80%E4%BB%8B-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"></div>
+      <!-- 多说评论框 END -->
+      <!-- 多说公共JS代码 BEGIN (一个网页只需插入一次) -->
+      <script type="text/javascript">
+      var duoshuoQuery = {short_name:"rocj-cn"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+           || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+        </script>
+      <!-- 多说公共JS代码 END -->
+      <!-- Duoshuo Comment END -->
+      
+  
+
+
+    </div>
+  </div>
+  <div class="column one-fourth">
+    
+<h3>Search</h3>
+<div id="site_search">
+    <input type="text" id="search_box" placeholder="Search">
+    <button class="btn btn-default" id="site_search_do"><span class="octicon octicon-search"></span></button>
+</div>
+
+<ul id="search_results"></ul>
+
+<link rel="stylesheet" type="text/css" href="/assets/css/modules/sidebar-search.css">
+<script src="/assets/js/lunr.min.js"></script>
+<script src="/assets/js/search.js"></script>
+
+
+    
+<h3>Post Directory</h3>
+<div id="post-directory-module" class="mobile-hidden">
+  <section class="post-directory">
+  <!-- Links that trigger the jumping -->
+  <!-- Added by javascript below -->
+  <dl></dl>
+  </section>
+</div>
+
+<script src="/assets/js/jquery.toc.js"></script>
+
+  </div>
+</div>
+</section>
+<!-- /section.content -->
+
+    <footer class="container">
+        <div class="site-footer" role="contentinfo">
+            <div class="copyright left mobile-block">
+                    © 2015
+                    <span title="Roc J">Roc J</span>
+                    <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
+            </div>
+
+            <ul class="site-footer-links right mobile-hidden">
+                <li>
+                    <a href="javascript:window.scrollTo(0,0)" >TOP</a>
+                </li>
+            </ul>
+            <a href="http://github.com/rocj/jekyll-mzlogin" target="_blank" aria-label="view source code">
+                <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+            </a>
+            <ul class="site-footer-links mobile-hidden">
+                
+                <li>
+                    <a href="/" title="首页" target="">首页</a>
+                </li>
+                
+                <li>
+                    <a href="/categories/" title="分类" target="">分类</a>
+                </li>
+                
+                <li>
+                    <a href="/wiki/" title="维基" target="">维基</a>
+                </li>
+                
+                <li>
+                    <a href="/links/" title="链接" target="">链接</a>
+                </li>
+                
+                <li>
+                    <a href="/about/" title="关于" target="">关于</a>
+                </li>
+                
+                <li><a href="/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a></li>
+            </ul>
+
+        </div>
+    </footer>
+    <!-- / footer -->
+    <script src="/assets/vendor/share.js/dist/js/share.min.js"></script>
+    <script src="/assets/js/geopattern.js"></script>
+    <script src="/assets/js/prism.js"></script>
+    <link rel="stylesheet" href="/assets/css/globals/prism.css">
+    <script>
+      jQuery(document).ready(function($) {
+        // geopattern
+        $('.geopattern').each(function(){
+          $(this).geopattern($(this).data('pattern-id'));
+        });
+       // hljs.initHighlightingOnLoad();
+      });
+    </script>
+    
+    <div style="display:none">
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80669434-1', 'auto');
+        ga('send', 'pageview');
+
+      </script>
+    </div>
+    
+</body>
+</html>
